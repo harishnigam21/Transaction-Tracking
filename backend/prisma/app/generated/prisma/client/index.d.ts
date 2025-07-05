@@ -14,10 +14,15 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model viewer
+ * Model expense
  * 
  */
-export type viewer = $Result.DefaultSelection<Prisma.$viewerPayload>
+export type expense = $Result.DefaultSelection<Prisma.$expensePayload>
+/**
+ * Model income
+ * 
+ */
+export type income = $Result.DefaultSelection<Prisma.$incomePayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -26,8 +31,8 @@ export type viewer = $Result.DefaultSelection<Prisma.$viewerPayload>
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Viewers
- * const viewers = await prisma.viewer.findMany()
+ * // Fetch zero or more Expenses
+ * const expenses = await prisma.expense.findMany()
  * ```
  *
  *
@@ -47,8 +52,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Viewers
-   * const viewers = await prisma.viewer.findMany()
+   * // Fetch zero or more Expenses
+   * const expenses = await prisma.expense.findMany()
    * ```
    *
    *
@@ -145,14 +150,24 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.viewer`: Exposes CRUD operations for the **viewer** model.
+   * `prisma.expense`: Exposes CRUD operations for the **expense** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Viewers
-    * const viewers = await prisma.viewer.findMany()
+    * // Fetch zero or more Expenses
+    * const expenses = await prisma.expense.findMany()
     * ```
     */
-  get viewer(): Prisma.viewerDelegate<ExtArgs, ClientOptions>;
+  get expense(): Prisma.expenseDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.income`: Exposes CRUD operations for the **income** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Incomes
+    * const incomes = await prisma.income.findMany()
+    * ```
+    */
+  get income(): Prisma.incomeDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -593,7 +608,8 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    viewer: 'viewer'
+    expense: 'expense',
+    income: 'income'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -612,73 +628,139 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "viewer"
+      modelProps: "expense" | "income"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      viewer: {
-        payload: Prisma.$viewerPayload<ExtArgs>
-        fields: Prisma.viewerFieldRefs
+      expense: {
+        payload: Prisma.$expensePayload<ExtArgs>
+        fields: Prisma.expenseFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.viewerFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$viewerPayload> | null
+            args: Prisma.expenseFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$expensePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.viewerFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$viewerPayload>
+            args: Prisma.expenseFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$expensePayload>
           }
           findFirst: {
-            args: Prisma.viewerFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$viewerPayload> | null
+            args: Prisma.expenseFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$expensePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.viewerFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$viewerPayload>
+            args: Prisma.expenseFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$expensePayload>
           }
           findMany: {
-            args: Prisma.viewerFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$viewerPayload>[]
+            args: Prisma.expenseFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$expensePayload>[]
           }
           create: {
-            args: Prisma.viewerCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$viewerPayload>
+            args: Prisma.expenseCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$expensePayload>
           }
           createMany: {
-            args: Prisma.viewerCreateManyArgs<ExtArgs>
+            args: Prisma.expenseCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           delete: {
-            args: Prisma.viewerDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$viewerPayload>
+            args: Prisma.expenseDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$expensePayload>
           }
           update: {
-            args: Prisma.viewerUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$viewerPayload>
+            args: Prisma.expenseUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$expensePayload>
           }
           deleteMany: {
-            args: Prisma.viewerDeleteManyArgs<ExtArgs>
+            args: Prisma.expenseDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.viewerUpdateManyArgs<ExtArgs>
+            args: Prisma.expenseUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.viewerUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$viewerPayload>
+            args: Prisma.expenseUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$expensePayload>
           }
           aggregate: {
-            args: Prisma.ViewerAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateViewer>
+            args: Prisma.ExpenseAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateExpense>
           }
           groupBy: {
-            args: Prisma.viewerGroupByArgs<ExtArgs>
-            result: $Utils.Optional<ViewerGroupByOutputType>[]
+            args: Prisma.expenseGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ExpenseGroupByOutputType>[]
           }
           count: {
-            args: Prisma.viewerCountArgs<ExtArgs>
-            result: $Utils.Optional<ViewerCountAggregateOutputType> | number
+            args: Prisma.expenseCountArgs<ExtArgs>
+            result: $Utils.Optional<ExpenseCountAggregateOutputType> | number
+          }
+        }
+      }
+      income: {
+        payload: Prisma.$incomePayload<ExtArgs>
+        fields: Prisma.incomeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.incomeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$incomePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.incomeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$incomePayload>
+          }
+          findFirst: {
+            args: Prisma.incomeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$incomePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.incomeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$incomePayload>
+          }
+          findMany: {
+            args: Prisma.incomeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$incomePayload>[]
+          }
+          create: {
+            args: Prisma.incomeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$incomePayload>
+          }
+          createMany: {
+            args: Prisma.incomeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.incomeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$incomePayload>
+          }
+          update: {
+            args: Prisma.incomeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$incomePayload>
+          }
+          deleteMany: {
+            args: Prisma.incomeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.incomeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.incomeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$incomePayload>
+          }
+          aggregate: {
+            args: Prisma.IncomeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateIncome>
+          }
+          groupBy: {
+            args: Prisma.incomeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<IncomeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.incomeCountArgs<ExtArgs>
+            result: $Utils.Optional<IncomeCountAggregateOutputType> | number
           }
         }
       }
@@ -766,7 +848,8 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
-    viewer?: viewerOmit
+    expense?: expenseOmit
+    income?: incomeOmit
   }
 
   /* Types for Logging */
@@ -862,357 +945,357 @@ export namespace Prisma {
    */
 
   /**
-   * Model viewer
+   * Model expense
    */
 
-  export type AggregateViewer = {
-    _count: ViewerCountAggregateOutputType | null
-    _avg: ViewerAvgAggregateOutputType | null
-    _sum: ViewerSumAggregateOutputType | null
-    _min: ViewerMinAggregateOutputType | null
-    _max: ViewerMaxAggregateOutputType | null
+  export type AggregateExpense = {
+    _count: ExpenseCountAggregateOutputType | null
+    _avg: ExpenseAvgAggregateOutputType | null
+    _sum: ExpenseSumAggregateOutputType | null
+    _min: ExpenseMinAggregateOutputType | null
+    _max: ExpenseMaxAggregateOutputType | null
   }
 
-  export type ViewerAvgAggregateOutputType = {
+  export type ExpenseAvgAggregateOutputType = {
     id: number | null
-    currentOTP: number | null
+    amount: number | null
   }
 
-  export type ViewerSumAggregateOutputType = {
+  export type ExpenseSumAggregateOutputType = {
     id: number | null
-    currentOTP: number | null
+    amount: number | null
   }
 
-  export type ViewerMinAggregateOutputType = {
+  export type ExpenseMinAggregateOutputType = {
     id: number | null
-    email: string | null
-    currentOTP: number | null
-    identificationNumber: string | null
+    to: string | null
+    amount: number | null
+    added_at: string | null
   }
 
-  export type ViewerMaxAggregateOutputType = {
+  export type ExpenseMaxAggregateOutputType = {
     id: number | null
-    email: string | null
-    currentOTP: number | null
-    identificationNumber: string | null
+    to: string | null
+    amount: number | null
+    added_at: string | null
   }
 
-  export type ViewerCountAggregateOutputType = {
+  export type ExpenseCountAggregateOutputType = {
     id: number
-    email: number
-    currentOTP: number
-    identificationNumber: number
+    to: number
+    amount: number
+    added_at: number
     _all: number
   }
 
 
-  export type ViewerAvgAggregateInputType = {
+  export type ExpenseAvgAggregateInputType = {
     id?: true
-    currentOTP?: true
+    amount?: true
   }
 
-  export type ViewerSumAggregateInputType = {
+  export type ExpenseSumAggregateInputType = {
     id?: true
-    currentOTP?: true
+    amount?: true
   }
 
-  export type ViewerMinAggregateInputType = {
+  export type ExpenseMinAggregateInputType = {
     id?: true
-    email?: true
-    currentOTP?: true
-    identificationNumber?: true
+    to?: true
+    amount?: true
+    added_at?: true
   }
 
-  export type ViewerMaxAggregateInputType = {
+  export type ExpenseMaxAggregateInputType = {
     id?: true
-    email?: true
-    currentOTP?: true
-    identificationNumber?: true
+    to?: true
+    amount?: true
+    added_at?: true
   }
 
-  export type ViewerCountAggregateInputType = {
+  export type ExpenseCountAggregateInputType = {
     id?: true
-    email?: true
-    currentOTP?: true
-    identificationNumber?: true
+    to?: true
+    amount?: true
+    added_at?: true
     _all?: true
   }
 
-  export type ViewerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ExpenseAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which viewer to aggregate.
+     * Filter which expense to aggregate.
      */
-    where?: viewerWhereInput
+    where?: expenseWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of viewers to fetch.
+     * Determine the order of expenses to fetch.
      */
-    orderBy?: viewerOrderByWithRelationInput | viewerOrderByWithRelationInput[]
+    orderBy?: expenseOrderByWithRelationInput | expenseOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: viewerWhereUniqueInput
+    cursor?: expenseWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` viewers from the position of the cursor.
+     * Take `±n` expenses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` viewers.
+     * Skip the first `n` expenses.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned viewers
+     * Count returned expenses
     **/
-    _count?: true | ViewerCountAggregateInputType
+    _count?: true | ExpenseCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: ViewerAvgAggregateInputType
+    _avg?: ExpenseAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: ViewerSumAggregateInputType
+    _sum?: ExpenseSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: ViewerMinAggregateInputType
+    _min?: ExpenseMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: ViewerMaxAggregateInputType
+    _max?: ExpenseMaxAggregateInputType
   }
 
-  export type GetViewerAggregateType<T extends ViewerAggregateArgs> = {
-        [P in keyof T & keyof AggregateViewer]: P extends '_count' | 'count'
+  export type GetExpenseAggregateType<T extends ExpenseAggregateArgs> = {
+        [P in keyof T & keyof AggregateExpense]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateViewer[P]>
-      : GetScalarType<T[P], AggregateViewer[P]>
+        : GetScalarType<T[P], AggregateExpense[P]>
+      : GetScalarType<T[P], AggregateExpense[P]>
   }
 
 
 
 
-  export type viewerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: viewerWhereInput
-    orderBy?: viewerOrderByWithAggregationInput | viewerOrderByWithAggregationInput[]
-    by: ViewerScalarFieldEnum[] | ViewerScalarFieldEnum
-    having?: viewerScalarWhereWithAggregatesInput
+  export type expenseGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: expenseWhereInput
+    orderBy?: expenseOrderByWithAggregationInput | expenseOrderByWithAggregationInput[]
+    by: ExpenseScalarFieldEnum[] | ExpenseScalarFieldEnum
+    having?: expenseScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: ViewerCountAggregateInputType | true
-    _avg?: ViewerAvgAggregateInputType
-    _sum?: ViewerSumAggregateInputType
-    _min?: ViewerMinAggregateInputType
-    _max?: ViewerMaxAggregateInputType
+    _count?: ExpenseCountAggregateInputType | true
+    _avg?: ExpenseAvgAggregateInputType
+    _sum?: ExpenseSumAggregateInputType
+    _min?: ExpenseMinAggregateInputType
+    _max?: ExpenseMaxAggregateInputType
   }
 
-  export type ViewerGroupByOutputType = {
+  export type ExpenseGroupByOutputType = {
     id: number
-    email: string
-    currentOTP: number
-    identificationNumber: string
-    _count: ViewerCountAggregateOutputType | null
-    _avg: ViewerAvgAggregateOutputType | null
-    _sum: ViewerSumAggregateOutputType | null
-    _min: ViewerMinAggregateOutputType | null
-    _max: ViewerMaxAggregateOutputType | null
+    to: string | null
+    amount: number | null
+    added_at: string | null
+    _count: ExpenseCountAggregateOutputType | null
+    _avg: ExpenseAvgAggregateOutputType | null
+    _sum: ExpenseSumAggregateOutputType | null
+    _min: ExpenseMinAggregateOutputType | null
+    _max: ExpenseMaxAggregateOutputType | null
   }
 
-  type GetViewerGroupByPayload<T extends viewerGroupByArgs> = Prisma.PrismaPromise<
+  type GetExpenseGroupByPayload<T extends expenseGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<ViewerGroupByOutputType, T['by']> &
+      PickEnumerable<ExpenseGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof ViewerGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof ExpenseGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], ViewerGroupByOutputType[P]>
-            : GetScalarType<T[P], ViewerGroupByOutputType[P]>
+              : GetScalarType<T[P], ExpenseGroupByOutputType[P]>
+            : GetScalarType<T[P], ExpenseGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type viewerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type expenseSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    email?: boolean
-    currentOTP?: boolean
-    identificationNumber?: boolean
-  }, ExtArgs["result"]["viewer"]>
+    to?: boolean
+    amount?: boolean
+    added_at?: boolean
+  }, ExtArgs["result"]["expense"]>
 
 
 
-  export type viewerSelectScalar = {
+  export type expenseSelectScalar = {
     id?: boolean
-    email?: boolean
-    currentOTP?: boolean
-    identificationNumber?: boolean
+    to?: boolean
+    amount?: boolean
+    added_at?: boolean
   }
 
-  export type viewerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "currentOTP" | "identificationNumber", ExtArgs["result"]["viewer"]>
+  export type expenseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "to" | "amount" | "added_at", ExtArgs["result"]["expense"]>
 
-  export type $viewerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "viewer"
+  export type $expensePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "expense"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      email: string
-      currentOTP: number
-      identificationNumber: string
-    }, ExtArgs["result"]["viewer"]>
+      to: string | null
+      amount: number | null
+      added_at: string | null
+    }, ExtArgs["result"]["expense"]>
     composites: {}
   }
 
-  type viewerGetPayload<S extends boolean | null | undefined | viewerDefaultArgs> = $Result.GetResult<Prisma.$viewerPayload, S>
+  type expenseGetPayload<S extends boolean | null | undefined | expenseDefaultArgs> = $Result.GetResult<Prisma.$expensePayload, S>
 
-  type viewerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<viewerFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: ViewerCountAggregateInputType | true
+  type expenseCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<expenseFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ExpenseCountAggregateInputType | true
     }
 
-  export interface viewerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['viewer'], meta: { name: 'viewer' } }
+  export interface expenseDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['expense'], meta: { name: 'expense' } }
     /**
-     * Find zero or one Viewer that matches the filter.
-     * @param {viewerFindUniqueArgs} args - Arguments to find a Viewer
+     * Find zero or one Expense that matches the filter.
+     * @param {expenseFindUniqueArgs} args - Arguments to find a Expense
      * @example
-     * // Get one Viewer
-     * const viewer = await prisma.viewer.findUnique({
+     * // Get one Expense
+     * const expense = await prisma.expense.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends viewerFindUniqueArgs>(args: SelectSubset<T, viewerFindUniqueArgs<ExtArgs>>): Prisma__viewerClient<$Result.GetResult<Prisma.$viewerPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends expenseFindUniqueArgs>(args: SelectSubset<T, expenseFindUniqueArgs<ExtArgs>>): Prisma__expenseClient<$Result.GetResult<Prisma.$expensePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Viewer that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Expense that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {viewerFindUniqueOrThrowArgs} args - Arguments to find a Viewer
+     * @param {expenseFindUniqueOrThrowArgs} args - Arguments to find a Expense
      * @example
-     * // Get one Viewer
-     * const viewer = await prisma.viewer.findUniqueOrThrow({
+     * // Get one Expense
+     * const expense = await prisma.expense.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends viewerFindUniqueOrThrowArgs>(args: SelectSubset<T, viewerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__viewerClient<$Result.GetResult<Prisma.$viewerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends expenseFindUniqueOrThrowArgs>(args: SelectSubset<T, expenseFindUniqueOrThrowArgs<ExtArgs>>): Prisma__expenseClient<$Result.GetResult<Prisma.$expensePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Viewer that matches the filter.
+     * Find the first Expense that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {viewerFindFirstArgs} args - Arguments to find a Viewer
+     * @param {expenseFindFirstArgs} args - Arguments to find a Expense
      * @example
-     * // Get one Viewer
-     * const viewer = await prisma.viewer.findFirst({
+     * // Get one Expense
+     * const expense = await prisma.expense.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends viewerFindFirstArgs>(args?: SelectSubset<T, viewerFindFirstArgs<ExtArgs>>): Prisma__viewerClient<$Result.GetResult<Prisma.$viewerPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends expenseFindFirstArgs>(args?: SelectSubset<T, expenseFindFirstArgs<ExtArgs>>): Prisma__expenseClient<$Result.GetResult<Prisma.$expensePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Viewer that matches the filter or
+     * Find the first Expense that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {viewerFindFirstOrThrowArgs} args - Arguments to find a Viewer
+     * @param {expenseFindFirstOrThrowArgs} args - Arguments to find a Expense
      * @example
-     * // Get one Viewer
-     * const viewer = await prisma.viewer.findFirstOrThrow({
+     * // Get one Expense
+     * const expense = await prisma.expense.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends viewerFindFirstOrThrowArgs>(args?: SelectSubset<T, viewerFindFirstOrThrowArgs<ExtArgs>>): Prisma__viewerClient<$Result.GetResult<Prisma.$viewerPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends expenseFindFirstOrThrowArgs>(args?: SelectSubset<T, expenseFindFirstOrThrowArgs<ExtArgs>>): Prisma__expenseClient<$Result.GetResult<Prisma.$expensePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Viewers that matches the filter.
+     * Find zero or more Expenses that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {viewerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {expenseFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Viewers
-     * const viewers = await prisma.viewer.findMany()
+     * // Get all Expenses
+     * const expenses = await prisma.expense.findMany()
      * 
-     * // Get first 10 Viewers
-     * const viewers = await prisma.viewer.findMany({ take: 10 })
+     * // Get first 10 Expenses
+     * const expenses = await prisma.expense.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const viewerWithIdOnly = await prisma.viewer.findMany({ select: { id: true } })
+     * const expenseWithIdOnly = await prisma.expense.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends viewerFindManyArgs>(args?: SelectSubset<T, viewerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$viewerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends expenseFindManyArgs>(args?: SelectSubset<T, expenseFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$expensePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Viewer.
-     * @param {viewerCreateArgs} args - Arguments to create a Viewer.
+     * Create a Expense.
+     * @param {expenseCreateArgs} args - Arguments to create a Expense.
      * @example
-     * // Create one Viewer
-     * const Viewer = await prisma.viewer.create({
+     * // Create one Expense
+     * const Expense = await prisma.expense.create({
      *   data: {
-     *     // ... data to create a Viewer
+     *     // ... data to create a Expense
      *   }
      * })
      * 
      */
-    create<T extends viewerCreateArgs>(args: SelectSubset<T, viewerCreateArgs<ExtArgs>>): Prisma__viewerClient<$Result.GetResult<Prisma.$viewerPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends expenseCreateArgs>(args: SelectSubset<T, expenseCreateArgs<ExtArgs>>): Prisma__expenseClient<$Result.GetResult<Prisma.$expensePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Viewers.
-     * @param {viewerCreateManyArgs} args - Arguments to create many Viewers.
+     * Create many Expenses.
+     * @param {expenseCreateManyArgs} args - Arguments to create many Expenses.
      * @example
-     * // Create many Viewers
-     * const viewer = await prisma.viewer.createMany({
+     * // Create many Expenses
+     * const expense = await prisma.expense.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends viewerCreateManyArgs>(args?: SelectSubset<T, viewerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends expenseCreateManyArgs>(args?: SelectSubset<T, expenseCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a Viewer.
-     * @param {viewerDeleteArgs} args - Arguments to delete one Viewer.
+     * Delete a Expense.
+     * @param {expenseDeleteArgs} args - Arguments to delete one Expense.
      * @example
-     * // Delete one Viewer
-     * const Viewer = await prisma.viewer.delete({
+     * // Delete one Expense
+     * const Expense = await prisma.expense.delete({
      *   where: {
-     *     // ... filter to delete one Viewer
+     *     // ... filter to delete one Expense
      *   }
      * })
      * 
      */
-    delete<T extends viewerDeleteArgs>(args: SelectSubset<T, viewerDeleteArgs<ExtArgs>>): Prisma__viewerClient<$Result.GetResult<Prisma.$viewerPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends expenseDeleteArgs>(args: SelectSubset<T, expenseDeleteArgs<ExtArgs>>): Prisma__expenseClient<$Result.GetResult<Prisma.$expensePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Viewer.
-     * @param {viewerUpdateArgs} args - Arguments to update one Viewer.
+     * Update one Expense.
+     * @param {expenseUpdateArgs} args - Arguments to update one Expense.
      * @example
-     * // Update one Viewer
-     * const viewer = await prisma.viewer.update({
+     * // Update one Expense
+     * const expense = await prisma.expense.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1222,30 +1305,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends viewerUpdateArgs>(args: SelectSubset<T, viewerUpdateArgs<ExtArgs>>): Prisma__viewerClient<$Result.GetResult<Prisma.$viewerPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends expenseUpdateArgs>(args: SelectSubset<T, expenseUpdateArgs<ExtArgs>>): Prisma__expenseClient<$Result.GetResult<Prisma.$expensePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Viewers.
-     * @param {viewerDeleteManyArgs} args - Arguments to filter Viewers to delete.
+     * Delete zero or more Expenses.
+     * @param {expenseDeleteManyArgs} args - Arguments to filter Expenses to delete.
      * @example
-     * // Delete a few Viewers
-     * const { count } = await prisma.viewer.deleteMany({
+     * // Delete a few Expenses
+     * const { count } = await prisma.expense.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends viewerDeleteManyArgs>(args?: SelectSubset<T, viewerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends expenseDeleteManyArgs>(args?: SelectSubset<T, expenseDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Viewers.
+     * Update zero or more Expenses.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {viewerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {expenseUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Viewers
-     * const viewer = await prisma.viewer.updateMany({
+     * // Update many Expenses
+     * const expense = await prisma.expense.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1255,56 +1338,56 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends viewerUpdateManyArgs>(args: SelectSubset<T, viewerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends expenseUpdateManyArgs>(args: SelectSubset<T, expenseUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one Viewer.
-     * @param {viewerUpsertArgs} args - Arguments to update or create a Viewer.
+     * Create or update one Expense.
+     * @param {expenseUpsertArgs} args - Arguments to update or create a Expense.
      * @example
-     * // Update or create a Viewer
-     * const viewer = await prisma.viewer.upsert({
+     * // Update or create a Expense
+     * const expense = await prisma.expense.upsert({
      *   create: {
-     *     // ... data to create a Viewer
+     *     // ... data to create a Expense
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Viewer we want to update
+     *     // ... the filter for the Expense we want to update
      *   }
      * })
      */
-    upsert<T extends viewerUpsertArgs>(args: SelectSubset<T, viewerUpsertArgs<ExtArgs>>): Prisma__viewerClient<$Result.GetResult<Prisma.$viewerPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends expenseUpsertArgs>(args: SelectSubset<T, expenseUpsertArgs<ExtArgs>>): Prisma__expenseClient<$Result.GetResult<Prisma.$expensePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Viewers.
+     * Count the number of Expenses.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {viewerCountArgs} args - Arguments to filter Viewers to count.
+     * @param {expenseCountArgs} args - Arguments to filter Expenses to count.
      * @example
-     * // Count the number of Viewers
-     * const count = await prisma.viewer.count({
+     * // Count the number of Expenses
+     * const count = await prisma.expense.count({
      *   where: {
-     *     // ... the filter for the Viewers we want to count
+     *     // ... the filter for the Expenses we want to count
      *   }
      * })
     **/
-    count<T extends viewerCountArgs>(
-      args?: Subset<T, viewerCountArgs>,
+    count<T extends expenseCountArgs>(
+      args?: Subset<T, expenseCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], ViewerCountAggregateOutputType>
+          : GetScalarType<T['select'], ExpenseCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Viewer.
+     * Allows you to perform aggregations operations on a Expense.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ViewerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {ExpenseAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -1324,13 +1407,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends ViewerAggregateArgs>(args: Subset<T, ViewerAggregateArgs>): Prisma.PrismaPromise<GetViewerAggregateType<T>>
+    aggregate<T extends ExpenseAggregateArgs>(args: Subset<T, ExpenseAggregateArgs>): Prisma.PrismaPromise<GetExpenseAggregateType<T>>
 
     /**
-     * Group by Viewer.
+     * Group by Expense.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {viewerGroupByArgs} args - Group by arguments.
+     * @param {expenseGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -1345,14 +1428,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends viewerGroupByArgs,
+      T extends expenseGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: viewerGroupByArgs['orderBy'] }
-        : { orderBy?: viewerGroupByArgs['orderBy'] },
+        ? { orderBy: expenseGroupByArgs['orderBy'] }
+        : { orderBy?: expenseGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -1401,20 +1484,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, viewerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetViewerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, expenseGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetExpenseGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the viewer model
+   * Fields of the expense model
    */
-  readonly fields: viewerFieldRefs;
+  readonly fields: expenseFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for viewer.
+   * The delegate class that acts as a "Promise-like" for expense.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__viewerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__expenseClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1442,331 +1525,1240 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the viewer model
+   * Fields of the expense model
    */
-  interface viewerFieldRefs {
-    readonly id: FieldRef<"viewer", 'Int'>
-    readonly email: FieldRef<"viewer", 'String'>
-    readonly currentOTP: FieldRef<"viewer", 'Int'>
-    readonly identificationNumber: FieldRef<"viewer", 'String'>
+  interface expenseFieldRefs {
+    readonly id: FieldRef<"expense", 'Int'>
+    readonly to: FieldRef<"expense", 'String'>
+    readonly amount: FieldRef<"expense", 'Int'>
+    readonly added_at: FieldRef<"expense", 'String'>
   }
     
 
   // Custom InputTypes
   /**
-   * viewer findUnique
+   * expense findUnique
    */
-  export type viewerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type expenseFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the viewer
+     * Select specific fields to fetch from the expense
      */
-    select?: viewerSelect<ExtArgs> | null
+    select?: expenseSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the viewer
+     * Omit specific fields from the expense
      */
-    omit?: viewerOmit<ExtArgs> | null
+    omit?: expenseOmit<ExtArgs> | null
     /**
-     * Filter, which viewer to fetch.
+     * Filter, which expense to fetch.
      */
-    where: viewerWhereUniqueInput
+    where: expenseWhereUniqueInput
   }
 
   /**
-   * viewer findUniqueOrThrow
+   * expense findUniqueOrThrow
    */
-  export type viewerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type expenseFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the viewer
+     * Select specific fields to fetch from the expense
      */
-    select?: viewerSelect<ExtArgs> | null
+    select?: expenseSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the viewer
+     * Omit specific fields from the expense
      */
-    omit?: viewerOmit<ExtArgs> | null
+    omit?: expenseOmit<ExtArgs> | null
     /**
-     * Filter, which viewer to fetch.
+     * Filter, which expense to fetch.
      */
-    where: viewerWhereUniqueInput
+    where: expenseWhereUniqueInput
   }
 
   /**
-   * viewer findFirst
+   * expense findFirst
    */
-  export type viewerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type expenseFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the viewer
+     * Select specific fields to fetch from the expense
      */
-    select?: viewerSelect<ExtArgs> | null
+    select?: expenseSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the viewer
+     * Omit specific fields from the expense
      */
-    omit?: viewerOmit<ExtArgs> | null
+    omit?: expenseOmit<ExtArgs> | null
     /**
-     * Filter, which viewer to fetch.
+     * Filter, which expense to fetch.
      */
-    where?: viewerWhereInput
+    where?: expenseWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of viewers to fetch.
+     * Determine the order of expenses to fetch.
      */
-    orderBy?: viewerOrderByWithRelationInput | viewerOrderByWithRelationInput[]
+    orderBy?: expenseOrderByWithRelationInput | expenseOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for viewers.
+     * Sets the position for searching for expenses.
      */
-    cursor?: viewerWhereUniqueInput
+    cursor?: expenseWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` viewers from the position of the cursor.
+     * Take `±n` expenses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` viewers.
+     * Skip the first `n` expenses.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of viewers.
+     * Filter by unique combinations of expenses.
      */
-    distinct?: ViewerScalarFieldEnum | ViewerScalarFieldEnum[]
+    distinct?: ExpenseScalarFieldEnum | ExpenseScalarFieldEnum[]
   }
 
   /**
-   * viewer findFirstOrThrow
+   * expense findFirstOrThrow
    */
-  export type viewerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type expenseFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the viewer
+     * Select specific fields to fetch from the expense
      */
-    select?: viewerSelect<ExtArgs> | null
+    select?: expenseSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the viewer
+     * Omit specific fields from the expense
      */
-    omit?: viewerOmit<ExtArgs> | null
+    omit?: expenseOmit<ExtArgs> | null
     /**
-     * Filter, which viewer to fetch.
+     * Filter, which expense to fetch.
      */
-    where?: viewerWhereInput
+    where?: expenseWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of viewers to fetch.
+     * Determine the order of expenses to fetch.
      */
-    orderBy?: viewerOrderByWithRelationInput | viewerOrderByWithRelationInput[]
+    orderBy?: expenseOrderByWithRelationInput | expenseOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for viewers.
+     * Sets the position for searching for expenses.
      */
-    cursor?: viewerWhereUniqueInput
+    cursor?: expenseWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` viewers from the position of the cursor.
+     * Take `±n` expenses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` viewers.
+     * Skip the first `n` expenses.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of viewers.
+     * Filter by unique combinations of expenses.
      */
-    distinct?: ViewerScalarFieldEnum | ViewerScalarFieldEnum[]
+    distinct?: ExpenseScalarFieldEnum | ExpenseScalarFieldEnum[]
   }
 
   /**
-   * viewer findMany
+   * expense findMany
    */
-  export type viewerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type expenseFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the viewer
+     * Select specific fields to fetch from the expense
      */
-    select?: viewerSelect<ExtArgs> | null
+    select?: expenseSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the viewer
+     * Omit specific fields from the expense
      */
-    omit?: viewerOmit<ExtArgs> | null
+    omit?: expenseOmit<ExtArgs> | null
     /**
-     * Filter, which viewers to fetch.
+     * Filter, which expenses to fetch.
      */
-    where?: viewerWhereInput
+    where?: expenseWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of viewers to fetch.
+     * Determine the order of expenses to fetch.
      */
-    orderBy?: viewerOrderByWithRelationInput | viewerOrderByWithRelationInput[]
+    orderBy?: expenseOrderByWithRelationInput | expenseOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing viewers.
+     * Sets the position for listing expenses.
      */
-    cursor?: viewerWhereUniqueInput
+    cursor?: expenseWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` viewers from the position of the cursor.
+     * Take `±n` expenses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` viewers.
+     * Skip the first `n` expenses.
      */
     skip?: number
-    distinct?: ViewerScalarFieldEnum | ViewerScalarFieldEnum[]
+    distinct?: ExpenseScalarFieldEnum | ExpenseScalarFieldEnum[]
   }
 
   /**
-   * viewer create
+   * expense create
    */
-  export type viewerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type expenseCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the viewer
+     * Select specific fields to fetch from the expense
      */
-    select?: viewerSelect<ExtArgs> | null
+    select?: expenseSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the viewer
+     * Omit specific fields from the expense
      */
-    omit?: viewerOmit<ExtArgs> | null
+    omit?: expenseOmit<ExtArgs> | null
     /**
-     * The data needed to create a viewer.
+     * The data needed to create a expense.
      */
-    data: XOR<viewerCreateInput, viewerUncheckedCreateInput>
+    data?: XOR<expenseCreateInput, expenseUncheckedCreateInput>
   }
 
   /**
-   * viewer createMany
+   * expense createMany
    */
-  export type viewerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type expenseCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many viewers.
+     * The data used to create many expenses.
      */
-    data: viewerCreateManyInput | viewerCreateManyInput[]
+    data: expenseCreateManyInput | expenseCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * viewer update
+   * expense update
    */
-  export type viewerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type expenseUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the viewer
+     * Select specific fields to fetch from the expense
      */
-    select?: viewerSelect<ExtArgs> | null
+    select?: expenseSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the viewer
+     * Omit specific fields from the expense
      */
-    omit?: viewerOmit<ExtArgs> | null
+    omit?: expenseOmit<ExtArgs> | null
     /**
-     * The data needed to update a viewer.
+     * The data needed to update a expense.
      */
-    data: XOR<viewerUpdateInput, viewerUncheckedUpdateInput>
+    data: XOR<expenseUpdateInput, expenseUncheckedUpdateInput>
     /**
-     * Choose, which viewer to update.
+     * Choose, which expense to update.
      */
-    where: viewerWhereUniqueInput
+    where: expenseWhereUniqueInput
   }
 
   /**
-   * viewer updateMany
+   * expense updateMany
    */
-  export type viewerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type expenseUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update viewers.
+     * The data used to update expenses.
      */
-    data: XOR<viewerUpdateManyMutationInput, viewerUncheckedUpdateManyInput>
+    data: XOR<expenseUpdateManyMutationInput, expenseUncheckedUpdateManyInput>
     /**
-     * Filter which viewers to update
+     * Filter which expenses to update
      */
-    where?: viewerWhereInput
+    where?: expenseWhereInput
     /**
-     * Limit how many viewers to update.
+     * Limit how many expenses to update.
      */
     limit?: number
   }
 
   /**
-   * viewer upsert
+   * expense upsert
    */
-  export type viewerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type expenseUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the viewer
+     * Select specific fields to fetch from the expense
      */
-    select?: viewerSelect<ExtArgs> | null
+    select?: expenseSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the viewer
+     * Omit specific fields from the expense
      */
-    omit?: viewerOmit<ExtArgs> | null
+    omit?: expenseOmit<ExtArgs> | null
     /**
-     * The filter to search for the viewer to update in case it exists.
+     * The filter to search for the expense to update in case it exists.
      */
-    where: viewerWhereUniqueInput
+    where: expenseWhereUniqueInput
     /**
-     * In case the viewer found by the `where` argument doesn't exist, create a new viewer with this data.
+     * In case the expense found by the `where` argument doesn't exist, create a new expense with this data.
      */
-    create: XOR<viewerCreateInput, viewerUncheckedCreateInput>
+    create: XOR<expenseCreateInput, expenseUncheckedCreateInput>
     /**
-     * In case the viewer was found with the provided `where` argument, update it with this data.
+     * In case the expense was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<viewerUpdateInput, viewerUncheckedUpdateInput>
+    update: XOR<expenseUpdateInput, expenseUncheckedUpdateInput>
   }
 
   /**
-   * viewer delete
+   * expense delete
    */
-  export type viewerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type expenseDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the viewer
+     * Select specific fields to fetch from the expense
      */
-    select?: viewerSelect<ExtArgs> | null
+    select?: expenseSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the viewer
+     * Omit specific fields from the expense
      */
-    omit?: viewerOmit<ExtArgs> | null
+    omit?: expenseOmit<ExtArgs> | null
     /**
-     * Filter which viewer to delete.
+     * Filter which expense to delete.
      */
-    where: viewerWhereUniqueInput
+    where: expenseWhereUniqueInput
   }
 
   /**
-   * viewer deleteMany
+   * expense deleteMany
    */
-  export type viewerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type expenseDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which viewers to delete
+     * Filter which expenses to delete
      */
-    where?: viewerWhereInput
+    where?: expenseWhereInput
     /**
-     * Limit how many viewers to delete.
+     * Limit how many expenses to delete.
      */
     limit?: number
   }
 
   /**
-   * viewer without action
+   * expense without action
    */
-  export type viewerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type expenseDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the viewer
+     * Select specific fields to fetch from the expense
      */
-    select?: viewerSelect<ExtArgs> | null
+    select?: expenseSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the viewer
+     * Omit specific fields from the expense
      */
-    omit?: viewerOmit<ExtArgs> | null
+    omit?: expenseOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model income
+   */
+
+  export type AggregateIncome = {
+    _count: IncomeCountAggregateOutputType | null
+    _avg: IncomeAvgAggregateOutputType | null
+    _sum: IncomeSumAggregateOutputType | null
+    _min: IncomeMinAggregateOutputType | null
+    _max: IncomeMaxAggregateOutputType | null
+  }
+
+  export type IncomeAvgAggregateOutputType = {
+    id: number | null
+    salary: number | null
+  }
+
+  export type IncomeSumAggregateOutputType = {
+    id: number | null
+    salary: number | null
+  }
+
+  export type IncomeMinAggregateOutputType = {
+    id: number | null
+    from: string | null
+    salary: number | null
+    added_at: string | null
+  }
+
+  export type IncomeMaxAggregateOutputType = {
+    id: number | null
+    from: string | null
+    salary: number | null
+    added_at: string | null
+  }
+
+  export type IncomeCountAggregateOutputType = {
+    id: number
+    from: number
+    salary: number
+    added_at: number
+    _all: number
+  }
+
+
+  export type IncomeAvgAggregateInputType = {
+    id?: true
+    salary?: true
+  }
+
+  export type IncomeSumAggregateInputType = {
+    id?: true
+    salary?: true
+  }
+
+  export type IncomeMinAggregateInputType = {
+    id?: true
+    from?: true
+    salary?: true
+    added_at?: true
+  }
+
+  export type IncomeMaxAggregateInputType = {
+    id?: true
+    from?: true
+    salary?: true
+    added_at?: true
+  }
+
+  export type IncomeCountAggregateInputType = {
+    id?: true
+    from?: true
+    salary?: true
+    added_at?: true
+    _all?: true
+  }
+
+  export type IncomeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which income to aggregate.
+     */
+    where?: incomeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of incomes to fetch.
+     */
+    orderBy?: incomeOrderByWithRelationInput | incomeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: incomeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` incomes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` incomes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned incomes
+    **/
+    _count?: true | IncomeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: IncomeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: IncomeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: IncomeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: IncomeMaxAggregateInputType
+  }
+
+  export type GetIncomeAggregateType<T extends IncomeAggregateArgs> = {
+        [P in keyof T & keyof AggregateIncome]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateIncome[P]>
+      : GetScalarType<T[P], AggregateIncome[P]>
+  }
+
+
+
+
+  export type incomeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: incomeWhereInput
+    orderBy?: incomeOrderByWithAggregationInput | incomeOrderByWithAggregationInput[]
+    by: IncomeScalarFieldEnum[] | IncomeScalarFieldEnum
+    having?: incomeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: IncomeCountAggregateInputType | true
+    _avg?: IncomeAvgAggregateInputType
+    _sum?: IncomeSumAggregateInputType
+    _min?: IncomeMinAggregateInputType
+    _max?: IncomeMaxAggregateInputType
+  }
+
+  export type IncomeGroupByOutputType = {
+    id: number
+    from: string | null
+    salary: number | null
+    added_at: string | null
+    _count: IncomeCountAggregateOutputType | null
+    _avg: IncomeAvgAggregateOutputType | null
+    _sum: IncomeSumAggregateOutputType | null
+    _min: IncomeMinAggregateOutputType | null
+    _max: IncomeMaxAggregateOutputType | null
+  }
+
+  type GetIncomeGroupByPayload<T extends incomeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<IncomeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof IncomeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], IncomeGroupByOutputType[P]>
+            : GetScalarType<T[P], IncomeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type incomeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    from?: boolean
+    salary?: boolean
+    added_at?: boolean
+  }, ExtArgs["result"]["income"]>
+
+
+
+  export type incomeSelectScalar = {
+    id?: boolean
+    from?: boolean
+    salary?: boolean
+    added_at?: boolean
+  }
+
+  export type incomeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "from" | "salary" | "added_at", ExtArgs["result"]["income"]>
+
+  export type $incomePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "income"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      from: string | null
+      salary: number | null
+      added_at: string | null
+    }, ExtArgs["result"]["income"]>
+    composites: {}
+  }
+
+  type incomeGetPayload<S extends boolean | null | undefined | incomeDefaultArgs> = $Result.GetResult<Prisma.$incomePayload, S>
+
+  type incomeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<incomeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: IncomeCountAggregateInputType | true
+    }
+
+  export interface incomeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['income'], meta: { name: 'income' } }
+    /**
+     * Find zero or one Income that matches the filter.
+     * @param {incomeFindUniqueArgs} args - Arguments to find a Income
+     * @example
+     * // Get one Income
+     * const income = await prisma.income.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends incomeFindUniqueArgs>(args: SelectSubset<T, incomeFindUniqueArgs<ExtArgs>>): Prisma__incomeClient<$Result.GetResult<Prisma.$incomePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Income that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {incomeFindUniqueOrThrowArgs} args - Arguments to find a Income
+     * @example
+     * // Get one Income
+     * const income = await prisma.income.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends incomeFindUniqueOrThrowArgs>(args: SelectSubset<T, incomeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__incomeClient<$Result.GetResult<Prisma.$incomePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Income that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {incomeFindFirstArgs} args - Arguments to find a Income
+     * @example
+     * // Get one Income
+     * const income = await prisma.income.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends incomeFindFirstArgs>(args?: SelectSubset<T, incomeFindFirstArgs<ExtArgs>>): Prisma__incomeClient<$Result.GetResult<Prisma.$incomePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Income that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {incomeFindFirstOrThrowArgs} args - Arguments to find a Income
+     * @example
+     * // Get one Income
+     * const income = await prisma.income.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends incomeFindFirstOrThrowArgs>(args?: SelectSubset<T, incomeFindFirstOrThrowArgs<ExtArgs>>): Prisma__incomeClient<$Result.GetResult<Prisma.$incomePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Incomes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {incomeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Incomes
+     * const incomes = await prisma.income.findMany()
+     * 
+     * // Get first 10 Incomes
+     * const incomes = await prisma.income.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const incomeWithIdOnly = await prisma.income.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends incomeFindManyArgs>(args?: SelectSubset<T, incomeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$incomePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Income.
+     * @param {incomeCreateArgs} args - Arguments to create a Income.
+     * @example
+     * // Create one Income
+     * const Income = await prisma.income.create({
+     *   data: {
+     *     // ... data to create a Income
+     *   }
+     * })
+     * 
+     */
+    create<T extends incomeCreateArgs>(args: SelectSubset<T, incomeCreateArgs<ExtArgs>>): Prisma__incomeClient<$Result.GetResult<Prisma.$incomePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Incomes.
+     * @param {incomeCreateManyArgs} args - Arguments to create many Incomes.
+     * @example
+     * // Create many Incomes
+     * const income = await prisma.income.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends incomeCreateManyArgs>(args?: SelectSubset<T, incomeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Income.
+     * @param {incomeDeleteArgs} args - Arguments to delete one Income.
+     * @example
+     * // Delete one Income
+     * const Income = await prisma.income.delete({
+     *   where: {
+     *     // ... filter to delete one Income
+     *   }
+     * })
+     * 
+     */
+    delete<T extends incomeDeleteArgs>(args: SelectSubset<T, incomeDeleteArgs<ExtArgs>>): Prisma__incomeClient<$Result.GetResult<Prisma.$incomePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Income.
+     * @param {incomeUpdateArgs} args - Arguments to update one Income.
+     * @example
+     * // Update one Income
+     * const income = await prisma.income.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends incomeUpdateArgs>(args: SelectSubset<T, incomeUpdateArgs<ExtArgs>>): Prisma__incomeClient<$Result.GetResult<Prisma.$incomePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Incomes.
+     * @param {incomeDeleteManyArgs} args - Arguments to filter Incomes to delete.
+     * @example
+     * // Delete a few Incomes
+     * const { count } = await prisma.income.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends incomeDeleteManyArgs>(args?: SelectSubset<T, incomeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Incomes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {incomeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Incomes
+     * const income = await prisma.income.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends incomeUpdateManyArgs>(args: SelectSubset<T, incomeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Income.
+     * @param {incomeUpsertArgs} args - Arguments to update or create a Income.
+     * @example
+     * // Update or create a Income
+     * const income = await prisma.income.upsert({
+     *   create: {
+     *     // ... data to create a Income
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Income we want to update
+     *   }
+     * })
+     */
+    upsert<T extends incomeUpsertArgs>(args: SelectSubset<T, incomeUpsertArgs<ExtArgs>>): Prisma__incomeClient<$Result.GetResult<Prisma.$incomePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Incomes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {incomeCountArgs} args - Arguments to filter Incomes to count.
+     * @example
+     * // Count the number of Incomes
+     * const count = await prisma.income.count({
+     *   where: {
+     *     // ... the filter for the Incomes we want to count
+     *   }
+     * })
+    **/
+    count<T extends incomeCountArgs>(
+      args?: Subset<T, incomeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], IncomeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Income.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IncomeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends IncomeAggregateArgs>(args: Subset<T, IncomeAggregateArgs>): Prisma.PrismaPromise<GetIncomeAggregateType<T>>
+
+    /**
+     * Group by Income.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {incomeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends incomeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: incomeGroupByArgs['orderBy'] }
+        : { orderBy?: incomeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, incomeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetIncomeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the income model
+   */
+  readonly fields: incomeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for income.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__incomeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the income model
+   */
+  interface incomeFieldRefs {
+    readonly id: FieldRef<"income", 'Int'>
+    readonly from: FieldRef<"income", 'String'>
+    readonly salary: FieldRef<"income", 'Int'>
+    readonly added_at: FieldRef<"income", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * income findUnique
+   */
+  export type incomeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the income
+     */
+    select?: incomeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the income
+     */
+    omit?: incomeOmit<ExtArgs> | null
+    /**
+     * Filter, which income to fetch.
+     */
+    where: incomeWhereUniqueInput
+  }
+
+  /**
+   * income findUniqueOrThrow
+   */
+  export type incomeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the income
+     */
+    select?: incomeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the income
+     */
+    omit?: incomeOmit<ExtArgs> | null
+    /**
+     * Filter, which income to fetch.
+     */
+    where: incomeWhereUniqueInput
+  }
+
+  /**
+   * income findFirst
+   */
+  export type incomeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the income
+     */
+    select?: incomeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the income
+     */
+    omit?: incomeOmit<ExtArgs> | null
+    /**
+     * Filter, which income to fetch.
+     */
+    where?: incomeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of incomes to fetch.
+     */
+    orderBy?: incomeOrderByWithRelationInput | incomeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for incomes.
+     */
+    cursor?: incomeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` incomes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` incomes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of incomes.
+     */
+    distinct?: IncomeScalarFieldEnum | IncomeScalarFieldEnum[]
+  }
+
+  /**
+   * income findFirstOrThrow
+   */
+  export type incomeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the income
+     */
+    select?: incomeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the income
+     */
+    omit?: incomeOmit<ExtArgs> | null
+    /**
+     * Filter, which income to fetch.
+     */
+    where?: incomeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of incomes to fetch.
+     */
+    orderBy?: incomeOrderByWithRelationInput | incomeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for incomes.
+     */
+    cursor?: incomeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` incomes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` incomes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of incomes.
+     */
+    distinct?: IncomeScalarFieldEnum | IncomeScalarFieldEnum[]
+  }
+
+  /**
+   * income findMany
+   */
+  export type incomeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the income
+     */
+    select?: incomeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the income
+     */
+    omit?: incomeOmit<ExtArgs> | null
+    /**
+     * Filter, which incomes to fetch.
+     */
+    where?: incomeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of incomes to fetch.
+     */
+    orderBy?: incomeOrderByWithRelationInput | incomeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing incomes.
+     */
+    cursor?: incomeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` incomes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` incomes.
+     */
+    skip?: number
+    distinct?: IncomeScalarFieldEnum | IncomeScalarFieldEnum[]
+  }
+
+  /**
+   * income create
+   */
+  export type incomeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the income
+     */
+    select?: incomeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the income
+     */
+    omit?: incomeOmit<ExtArgs> | null
+    /**
+     * The data needed to create a income.
+     */
+    data?: XOR<incomeCreateInput, incomeUncheckedCreateInput>
+  }
+
+  /**
+   * income createMany
+   */
+  export type incomeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many incomes.
+     */
+    data: incomeCreateManyInput | incomeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * income update
+   */
+  export type incomeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the income
+     */
+    select?: incomeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the income
+     */
+    omit?: incomeOmit<ExtArgs> | null
+    /**
+     * The data needed to update a income.
+     */
+    data: XOR<incomeUpdateInput, incomeUncheckedUpdateInput>
+    /**
+     * Choose, which income to update.
+     */
+    where: incomeWhereUniqueInput
+  }
+
+  /**
+   * income updateMany
+   */
+  export type incomeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update incomes.
+     */
+    data: XOR<incomeUpdateManyMutationInput, incomeUncheckedUpdateManyInput>
+    /**
+     * Filter which incomes to update
+     */
+    where?: incomeWhereInput
+    /**
+     * Limit how many incomes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * income upsert
+   */
+  export type incomeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the income
+     */
+    select?: incomeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the income
+     */
+    omit?: incomeOmit<ExtArgs> | null
+    /**
+     * The filter to search for the income to update in case it exists.
+     */
+    where: incomeWhereUniqueInput
+    /**
+     * In case the income found by the `where` argument doesn't exist, create a new income with this data.
+     */
+    create: XOR<incomeCreateInput, incomeUncheckedCreateInput>
+    /**
+     * In case the income was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<incomeUpdateInput, incomeUncheckedUpdateInput>
+  }
+
+  /**
+   * income delete
+   */
+  export type incomeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the income
+     */
+    select?: incomeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the income
+     */
+    omit?: incomeOmit<ExtArgs> | null
+    /**
+     * Filter which income to delete.
+     */
+    where: incomeWhereUniqueInput
+  }
+
+  /**
+   * income deleteMany
+   */
+  export type incomeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which incomes to delete
+     */
+    where?: incomeWhereInput
+    /**
+     * Limit how many incomes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * income without action
+   */
+  export type incomeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the income
+     */
+    select?: incomeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the income
+     */
+    omit?: incomeOmit<ExtArgs> | null
   }
 
 
@@ -1784,14 +2776,24 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const ViewerScalarFieldEnum: {
+  export const ExpenseScalarFieldEnum: {
     id: 'id',
-    email: 'email',
-    currentOTP: 'currentOTP',
-    identificationNumber: 'identificationNumber'
+    to: 'to',
+    amount: 'amount',
+    added_at: 'added_at'
   };
 
-  export type ViewerScalarFieldEnum = (typeof ViewerScalarFieldEnum)[keyof typeof ViewerScalarFieldEnum]
+  export type ExpenseScalarFieldEnum = (typeof ExpenseScalarFieldEnum)[keyof typeof ExpenseScalarFieldEnum]
+
+
+  export const IncomeScalarFieldEnum: {
+    id: 'id',
+    from: 'from',
+    salary: 'salary',
+    added_at: 'added_at'
+  };
+
+  export type IncomeScalarFieldEnum = (typeof IncomeScalarFieldEnum)[keyof typeof IncomeScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -1802,12 +2804,28 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-  export const viewerOrderByRelevanceFieldEnum: {
-    email: 'email',
-    identificationNumber: 'identificationNumber'
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
   };
 
-  export type viewerOrderByRelevanceFieldEnum = (typeof viewerOrderByRelevanceFieldEnum)[keyof typeof viewerOrderByRelevanceFieldEnum]
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  export const expenseOrderByRelevanceFieldEnum: {
+    to: 'to',
+    added_at: 'added_at'
+  };
+
+  export type expenseOrderByRelevanceFieldEnum = (typeof expenseOrderByRelevanceFieldEnum)[keyof typeof expenseOrderByRelevanceFieldEnum]
+
+
+  export const incomeOrderByRelevanceFieldEnum: {
+    from: 'from',
+    added_at: 'added_at'
+  };
+
+  export type incomeOrderByRelevanceFieldEnum = (typeof incomeOrderByRelevanceFieldEnum)[keyof typeof incomeOrderByRelevanceFieldEnum]
 
 
   /**
@@ -1839,100 +2857,196 @@ export namespace Prisma {
    */
 
 
-  export type viewerWhereInput = {
-    AND?: viewerWhereInput | viewerWhereInput[]
-    OR?: viewerWhereInput[]
-    NOT?: viewerWhereInput | viewerWhereInput[]
-    id?: IntFilter<"viewer"> | number
-    email?: StringFilter<"viewer"> | string
-    currentOTP?: IntFilter<"viewer"> | number
-    identificationNumber?: StringFilter<"viewer"> | string
+  export type expenseWhereInput = {
+    AND?: expenseWhereInput | expenseWhereInput[]
+    OR?: expenseWhereInput[]
+    NOT?: expenseWhereInput | expenseWhereInput[]
+    id?: IntFilter<"expense"> | number
+    to?: StringNullableFilter<"expense"> | string | null
+    amount?: IntNullableFilter<"expense"> | number | null
+    added_at?: StringNullableFilter<"expense"> | string | null
   }
 
-  export type viewerOrderByWithRelationInput = {
+  export type expenseOrderByWithRelationInput = {
     id?: SortOrder
-    email?: SortOrder
-    currentOTP?: SortOrder
-    identificationNumber?: SortOrder
-    _relevance?: viewerOrderByRelevanceInput
+    to?: SortOrderInput | SortOrder
+    amount?: SortOrderInput | SortOrder
+    added_at?: SortOrderInput | SortOrder
+    _relevance?: expenseOrderByRelevanceInput
   }
 
-  export type viewerWhereUniqueInput = Prisma.AtLeast<{
+  export type expenseWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    email?: string
-    identificationNumber?: string
-    AND?: viewerWhereInput | viewerWhereInput[]
-    OR?: viewerWhereInput[]
-    NOT?: viewerWhereInput | viewerWhereInput[]
-    currentOTP?: IntFilter<"viewer"> | number
-  }, "id" | "id" | "email" | "identificationNumber">
+    AND?: expenseWhereInput | expenseWhereInput[]
+    OR?: expenseWhereInput[]
+    NOT?: expenseWhereInput | expenseWhereInput[]
+    to?: StringNullableFilter<"expense"> | string | null
+    amount?: IntNullableFilter<"expense"> | number | null
+    added_at?: StringNullableFilter<"expense"> | string | null
+  }, "id" | "id">
 
-  export type viewerOrderByWithAggregationInput = {
+  export type expenseOrderByWithAggregationInput = {
     id?: SortOrder
-    email?: SortOrder
-    currentOTP?: SortOrder
-    identificationNumber?: SortOrder
-    _count?: viewerCountOrderByAggregateInput
-    _avg?: viewerAvgOrderByAggregateInput
-    _max?: viewerMaxOrderByAggregateInput
-    _min?: viewerMinOrderByAggregateInput
-    _sum?: viewerSumOrderByAggregateInput
+    to?: SortOrderInput | SortOrder
+    amount?: SortOrderInput | SortOrder
+    added_at?: SortOrderInput | SortOrder
+    _count?: expenseCountOrderByAggregateInput
+    _avg?: expenseAvgOrderByAggregateInput
+    _max?: expenseMaxOrderByAggregateInput
+    _min?: expenseMinOrderByAggregateInput
+    _sum?: expenseSumOrderByAggregateInput
   }
 
-  export type viewerScalarWhereWithAggregatesInput = {
-    AND?: viewerScalarWhereWithAggregatesInput | viewerScalarWhereWithAggregatesInput[]
-    OR?: viewerScalarWhereWithAggregatesInput[]
-    NOT?: viewerScalarWhereWithAggregatesInput | viewerScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"viewer"> | number
-    email?: StringWithAggregatesFilter<"viewer"> | string
-    currentOTP?: IntWithAggregatesFilter<"viewer"> | number
-    identificationNumber?: StringWithAggregatesFilter<"viewer"> | string
+  export type expenseScalarWhereWithAggregatesInput = {
+    AND?: expenseScalarWhereWithAggregatesInput | expenseScalarWhereWithAggregatesInput[]
+    OR?: expenseScalarWhereWithAggregatesInput[]
+    NOT?: expenseScalarWhereWithAggregatesInput | expenseScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"expense"> | number
+    to?: StringNullableWithAggregatesFilter<"expense"> | string | null
+    amount?: IntNullableWithAggregatesFilter<"expense"> | number | null
+    added_at?: StringNullableWithAggregatesFilter<"expense"> | string | null
   }
 
-  export type viewerCreateInput = {
-    email: string
-    currentOTP: number
-    identificationNumber: string
+  export type incomeWhereInput = {
+    AND?: incomeWhereInput | incomeWhereInput[]
+    OR?: incomeWhereInput[]
+    NOT?: incomeWhereInput | incomeWhereInput[]
+    id?: IntFilter<"income"> | number
+    from?: StringNullableFilter<"income"> | string | null
+    salary?: IntNullableFilter<"income"> | number | null
+    added_at?: StringNullableFilter<"income"> | string | null
   }
 
-  export type viewerUncheckedCreateInput = {
+  export type incomeOrderByWithRelationInput = {
+    id?: SortOrder
+    from?: SortOrderInput | SortOrder
+    salary?: SortOrderInput | SortOrder
+    added_at?: SortOrderInput | SortOrder
+    _relevance?: incomeOrderByRelevanceInput
+  }
+
+  export type incomeWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    email: string
-    currentOTP: number
-    identificationNumber: string
+    AND?: incomeWhereInput | incomeWhereInput[]
+    OR?: incomeWhereInput[]
+    NOT?: incomeWhereInput | incomeWhereInput[]
+    from?: StringNullableFilter<"income"> | string | null
+    salary?: IntNullableFilter<"income"> | number | null
+    added_at?: StringNullableFilter<"income"> | string | null
+  }, "id" | "id">
+
+  export type incomeOrderByWithAggregationInput = {
+    id?: SortOrder
+    from?: SortOrderInput | SortOrder
+    salary?: SortOrderInput | SortOrder
+    added_at?: SortOrderInput | SortOrder
+    _count?: incomeCountOrderByAggregateInput
+    _avg?: incomeAvgOrderByAggregateInput
+    _max?: incomeMaxOrderByAggregateInput
+    _min?: incomeMinOrderByAggregateInput
+    _sum?: incomeSumOrderByAggregateInput
   }
 
-  export type viewerUpdateInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    currentOTP?: IntFieldUpdateOperationsInput | number
-    identificationNumber?: StringFieldUpdateOperationsInput | string
+  export type incomeScalarWhereWithAggregatesInput = {
+    AND?: incomeScalarWhereWithAggregatesInput | incomeScalarWhereWithAggregatesInput[]
+    OR?: incomeScalarWhereWithAggregatesInput[]
+    NOT?: incomeScalarWhereWithAggregatesInput | incomeScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"income"> | number
+    from?: StringNullableWithAggregatesFilter<"income"> | string | null
+    salary?: IntNullableWithAggregatesFilter<"income"> | number | null
+    added_at?: StringNullableWithAggregatesFilter<"income"> | string | null
   }
 
-  export type viewerUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    currentOTP?: IntFieldUpdateOperationsInput | number
-    identificationNumber?: StringFieldUpdateOperationsInput | string
+  export type expenseCreateInput = {
+    to?: string | null
+    amount?: number | null
+    added_at?: string | null
   }
 
-  export type viewerCreateManyInput = {
+  export type expenseUncheckedCreateInput = {
     id?: number
-    email: string
-    currentOTP: number
-    identificationNumber: string
+    to?: string | null
+    amount?: number | null
+    added_at?: string | null
   }
 
-  export type viewerUpdateManyMutationInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    currentOTP?: IntFieldUpdateOperationsInput | number
-    identificationNumber?: StringFieldUpdateOperationsInput | string
+  export type expenseUpdateInput = {
+    to?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    added_at?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type viewerUncheckedUpdateManyInput = {
+  export type expenseUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    currentOTP?: IntFieldUpdateOperationsInput | number
-    identificationNumber?: StringFieldUpdateOperationsInput | string
+    to?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    added_at?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type expenseCreateManyInput = {
+    id?: number
+    to?: string | null
+    amount?: number | null
+    added_at?: string | null
+  }
+
+  export type expenseUpdateManyMutationInput = {
+    to?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    added_at?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type expenseUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    to?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableIntFieldUpdateOperationsInput | number | null
+    added_at?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type incomeCreateInput = {
+    from?: string | null
+    salary?: number | null
+    added_at?: string | null
+  }
+
+  export type incomeUncheckedCreateInput = {
+    id?: number
+    from?: string | null
+    salary?: number | null
+    added_at?: string | null
+  }
+
+  export type incomeUpdateInput = {
+    from?: NullableStringFieldUpdateOperationsInput | string | null
+    salary?: NullableIntFieldUpdateOperationsInput | number | null
+    added_at?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type incomeUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    from?: NullableStringFieldUpdateOperationsInput | string | null
+    salary?: NullableIntFieldUpdateOperationsInput | number | null
+    added_at?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type incomeCreateManyInput = {
+    id?: number
+    from?: string | null
+    salary?: number | null
+    added_at?: string | null
+  }
+
+  export type incomeUpdateManyMutationInput = {
+    from?: NullableStringFieldUpdateOperationsInput | string | null
+    salary?: NullableIntFieldUpdateOperationsInput | number | null
+    added_at?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type incomeUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    from?: NullableStringFieldUpdateOperationsInput | string | null
+    salary?: NullableIntFieldUpdateOperationsInput | number | null
+    added_at?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -1946,10 +3060,10 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type StringFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -1958,44 +3072,60 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     search?: string
-    not?: NestedStringFilter<$PrismaModel> | string
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type viewerOrderByRelevanceInput = {
-    fields: viewerOrderByRelevanceFieldEnum | viewerOrderByRelevanceFieldEnum[]
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type expenseOrderByRelevanceInput = {
+    fields: expenseOrderByRelevanceFieldEnum | expenseOrderByRelevanceFieldEnum[]
     sort: SortOrder
     search: string
   }
 
-  export type viewerCountOrderByAggregateInput = {
+  export type expenseCountOrderByAggregateInput = {
     id?: SortOrder
-    email?: SortOrder
-    currentOTP?: SortOrder
-    identificationNumber?: SortOrder
+    to?: SortOrder
+    amount?: SortOrder
+    added_at?: SortOrder
   }
 
-  export type viewerAvgOrderByAggregateInput = {
+  export type expenseAvgOrderByAggregateInput = {
     id?: SortOrder
-    currentOTP?: SortOrder
+    amount?: SortOrder
   }
 
-  export type viewerMaxOrderByAggregateInput = {
+  export type expenseMaxOrderByAggregateInput = {
     id?: SortOrder
-    email?: SortOrder
-    currentOTP?: SortOrder
-    identificationNumber?: SortOrder
+    to?: SortOrder
+    amount?: SortOrder
+    added_at?: SortOrder
   }
 
-  export type viewerMinOrderByAggregateInput = {
+  export type expenseMinOrderByAggregateInput = {
     id?: SortOrder
-    email?: SortOrder
-    currentOTP?: SortOrder
-    identificationNumber?: SortOrder
+    to?: SortOrder
+    amount?: SortOrder
+    added_at?: SortOrder
   }
 
-  export type viewerSumOrderByAggregateInput = {
+  export type expenseSumOrderByAggregateInput = {
     id?: SortOrder
-    currentOTP?: SortOrder
+    amount?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -2014,10 +3144,10 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -2026,14 +3156,75 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     search?: string
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type incomeOrderByRelevanceInput = {
+    fields: incomeOrderByRelevanceFieldEnum | incomeOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type incomeCountOrderByAggregateInput = {
+    id?: SortOrder
+    from?: SortOrder
+    salary?: SortOrder
+    added_at?: SortOrder
+  }
+
+  export type incomeAvgOrderByAggregateInput = {
+    id?: SortOrder
+    salary?: SortOrder
+  }
+
+  export type incomeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    from?: SortOrder
+    salary?: SortOrder
+    added_at?: SortOrder
+  }
+
+  export type incomeMinOrderByAggregateInput = {
+    id?: SortOrder
+    from?: SortOrder
+    salary?: SortOrder
+    added_at?: SortOrder
+  }
+
+  export type incomeSumOrderByAggregateInput = {
+    id?: SortOrder
+    salary?: SortOrder
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -2055,10 +3246,10 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type NestedStringFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -2067,7 +3258,18 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     search?: string
-    not?: NestedStringFilter<$PrismaModel> | string
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -2097,10 +3299,10 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -2109,10 +3311,37 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     search?: string
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
 

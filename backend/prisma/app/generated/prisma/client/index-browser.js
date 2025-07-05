@@ -120,11 +120,18 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.ViewerScalarFieldEnum = {
+exports.Prisma.ExpenseScalarFieldEnum = {
   id: 'id',
-  email: 'email',
-  currentOTP: 'currentOTP',
-  identificationNumber: 'identificationNumber'
+  to: 'to',
+  amount: 'amount',
+  added_at: 'added_at'
+};
+
+exports.Prisma.IncomeScalarFieldEnum = {
+  id: 'id',
+  from: 'from',
+  salary: 'salary',
+  added_at: 'added_at'
 };
 
 exports.Prisma.SortOrder = {
@@ -132,14 +139,25 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
-exports.Prisma.viewerOrderByRelevanceFieldEnum = {
-  email: 'email',
-  identificationNumber: 'identificationNumber'
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
+exports.Prisma.expenseOrderByRelevanceFieldEnum = {
+  to: 'to',
+  added_at: 'added_at'
+};
+
+exports.Prisma.incomeOrderByRelevanceFieldEnum = {
+  from: 'from',
+  added_at: 'added_at'
 };
 
 
 exports.Prisma.ModelName = {
-  viewer: 'viewer'
+  expense: 'expense',
+  income: 'income'
 };
 
 /**

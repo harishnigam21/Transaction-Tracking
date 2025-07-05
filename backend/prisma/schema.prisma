@@ -5,11 +5,19 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "../generated/prisma"
+  provider      = "prisma-client-js"
+  output        = "app/generated/prisma/client"
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model viewer {
+  id                   Int    @id @unique(map: "viewer_id_key") @default(autoincrement())
+  email                String @unique(map: "viewer_email_key")
+  currentOTP           Int
+  identificationNumber String @unique(map: "viewer_identificationNumber_key")
 }

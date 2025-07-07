@@ -1877,21 +1877,21 @@ export namespace Prisma {
 
   export type IncomeMinAggregateOutputType = {
     id: number | null
-    from: string | null
+    source: string | null
     salary: number | null
     added_at: string | null
   }
 
   export type IncomeMaxAggregateOutputType = {
     id: number | null
-    from: string | null
+    source: string | null
     salary: number | null
     added_at: string | null
   }
 
   export type IncomeCountAggregateOutputType = {
     id: number
-    from: number
+    source: number
     salary: number
     added_at: number
     _all: number
@@ -1910,21 +1910,21 @@ export namespace Prisma {
 
   export type IncomeMinAggregateInputType = {
     id?: true
-    from?: true
+    source?: true
     salary?: true
     added_at?: true
   }
 
   export type IncomeMaxAggregateInputType = {
     id?: true
-    from?: true
+    source?: true
     salary?: true
     added_at?: true
   }
 
   export type IncomeCountAggregateInputType = {
     id?: true
-    from?: true
+    source?: true
     salary?: true
     added_at?: true
     _all?: true
@@ -2018,7 +2018,7 @@ export namespace Prisma {
 
   export type IncomeGroupByOutputType = {
     id: number
-    from: string | null
+    source: string | null
     salary: number | null
     added_at: string | null
     _count: IncomeCountAggregateOutputType | null
@@ -2044,7 +2044,7 @@ export namespace Prisma {
 
   export type incomeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    from?: boolean
+    source?: boolean
     salary?: boolean
     added_at?: boolean
   }, ExtArgs["result"]["income"]>
@@ -2053,19 +2053,19 @@ export namespace Prisma {
 
   export type incomeSelectScalar = {
     id?: boolean
-    from?: boolean
+    source?: boolean
     salary?: boolean
     added_at?: boolean
   }
 
-  export type incomeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "from" | "salary" | "added_at", ExtArgs["result"]["income"]>
+  export type incomeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "source" | "salary" | "added_at", ExtArgs["result"]["income"]>
 
   export type $incomePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "income"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      from: string | null
+      source: string | null
       salary: number | null
       added_at: string | null
     }, ExtArgs["result"]["income"]>
@@ -2438,7 +2438,7 @@ export namespace Prisma {
    */
   interface incomeFieldRefs {
     readonly id: FieldRef<"income", 'Int'>
-    readonly from: FieldRef<"income", 'String'>
+    readonly source: FieldRef<"income", 'String'>
     readonly salary: FieldRef<"income", 'Int'>
     readonly added_at: FieldRef<"income", 'String'>
   }
@@ -2788,7 +2788,7 @@ export namespace Prisma {
 
   export const IncomeScalarFieldEnum: {
     id: 'id',
-    from: 'from',
+    source: 'source',
     salary: 'salary',
     added_at: 'added_at'
   };
@@ -2821,7 +2821,7 @@ export namespace Prisma {
 
 
   export const incomeOrderByRelevanceFieldEnum: {
-    from: 'from',
+    source: 'source',
     added_at: 'added_at'
   };
 
@@ -2912,14 +2912,14 @@ export namespace Prisma {
     OR?: incomeWhereInput[]
     NOT?: incomeWhereInput | incomeWhereInput[]
     id?: IntFilter<"income"> | number
-    from?: StringNullableFilter<"income"> | string | null
+    source?: StringNullableFilter<"income"> | string | null
     salary?: IntNullableFilter<"income"> | number | null
     added_at?: StringNullableFilter<"income"> | string | null
   }
 
   export type incomeOrderByWithRelationInput = {
     id?: SortOrder
-    from?: SortOrderInput | SortOrder
+    source?: SortOrderInput | SortOrder
     salary?: SortOrderInput | SortOrder
     added_at?: SortOrderInput | SortOrder
     _relevance?: incomeOrderByRelevanceInput
@@ -2930,14 +2930,14 @@ export namespace Prisma {
     AND?: incomeWhereInput | incomeWhereInput[]
     OR?: incomeWhereInput[]
     NOT?: incomeWhereInput | incomeWhereInput[]
-    from?: StringNullableFilter<"income"> | string | null
+    source?: StringNullableFilter<"income"> | string | null
     salary?: IntNullableFilter<"income"> | number | null
     added_at?: StringNullableFilter<"income"> | string | null
   }, "id" | "id">
 
   export type incomeOrderByWithAggregationInput = {
     id?: SortOrder
-    from?: SortOrderInput | SortOrder
+    source?: SortOrderInput | SortOrder
     salary?: SortOrderInput | SortOrder
     added_at?: SortOrderInput | SortOrder
     _count?: incomeCountOrderByAggregateInput
@@ -2952,7 +2952,7 @@ export namespace Prisma {
     OR?: incomeScalarWhereWithAggregatesInput[]
     NOT?: incomeScalarWhereWithAggregatesInput | incomeScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"income"> | number
-    from?: StringNullableWithAggregatesFilter<"income"> | string | null
+    source?: StringNullableWithAggregatesFilter<"income"> | string | null
     salary?: IntNullableWithAggregatesFilter<"income"> | number | null
     added_at?: StringNullableWithAggregatesFilter<"income"> | string | null
   }
@@ -3004,47 +3004,47 @@ export namespace Prisma {
   }
 
   export type incomeCreateInput = {
-    from?: string | null
+    source?: string | null
     salary?: number | null
     added_at?: string | null
   }
 
   export type incomeUncheckedCreateInput = {
     id?: number
-    from?: string | null
+    source?: string | null
     salary?: number | null
     added_at?: string | null
   }
 
   export type incomeUpdateInput = {
-    from?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
     salary?: NullableIntFieldUpdateOperationsInput | number | null
     added_at?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type incomeUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    from?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
     salary?: NullableIntFieldUpdateOperationsInput | number | null
     added_at?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type incomeCreateManyInput = {
     id?: number
-    from?: string | null
+    source?: string | null
     salary?: number | null
     added_at?: string | null
   }
 
   export type incomeUpdateManyMutationInput = {
-    from?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
     salary?: NullableIntFieldUpdateOperationsInput | number | null
     added_at?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type incomeUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    from?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
     salary?: NullableIntFieldUpdateOperationsInput | number | null
     added_at?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -3186,7 +3186,7 @@ export namespace Prisma {
 
   export type incomeCountOrderByAggregateInput = {
     id?: SortOrder
-    from?: SortOrder
+    source?: SortOrder
     salary?: SortOrder
     added_at?: SortOrder
   }
@@ -3198,14 +3198,14 @@ export namespace Prisma {
 
   export type incomeMaxOrderByAggregateInput = {
     id?: SortOrder
-    from?: SortOrder
+    source?: SortOrder
     salary?: SortOrder
     added_at?: SortOrder
   }
 
   export type incomeMinOrderByAggregateInput = {
     id?: SortOrder
-    from?: SortOrder
+    source?: SortOrder
     salary?: SortOrder
     added_at?: SortOrder
   }

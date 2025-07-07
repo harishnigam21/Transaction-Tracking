@@ -1,4 +1,5 @@
-const fetch = async (to, method, id, obj) => {
+const fetchData = async (to, method, id, obj) => {
+  console.log("fetching");
   const createResponse = (message) => {
     const response = {
       Message: message,
@@ -46,4 +47,4 @@ const fetch = async (to, method, id, obj) => {
     );
   }
 };
-module.exports = fetch;
+module.exports = fetchData;

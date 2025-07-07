@@ -129,7 +129,7 @@ exports.Prisma.ExpenseScalarFieldEnum = {
 
 exports.Prisma.IncomeScalarFieldEnum = {
   id: 'id',
-  from: 'from',
+  source: 'source',
   salary: 'salary',
   added_at: 'added_at'
 };
@@ -150,7 +150,7 @@ exports.Prisma.expenseOrderByRelevanceFieldEnum = {
 };
 
 exports.Prisma.incomeOrderByRelevanceFieldEnum = {
-  from: 'from',
+  source: 'source',
   added_at: 'added_at'
 };
 

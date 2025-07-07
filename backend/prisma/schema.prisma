@@ -18,7 +18,7 @@ model expense {
 
 model income {
   id       Int     @id @unique(map: "id_UNIQUE") @default(autoincrement())
-  from     String? @db.VarChar(255)
+  source   String? @db.VarChar(255)
   salary   Int?
   added_at String? @db.VarChar(100)
 }

@@ -109,7 +109,7 @@ export function Expense() {
         <h1 className="text-center text-2xl font-extrabold">Expense Soures</h1>
         <div className="flex flex-row flex-wrap text-center justify-center">
           {expense.length > 0 ? (
-            expense.map((exp) => {
+            [...expense].reverse().map((exp) => {
               return (
                 // each item in list
                 <section

@@ -222,7 +222,7 @@ export function Dashboard() {
         <div className="flex  h-[500px] grow w-full md:w-1/2 flex-col p-2 shadow-[0.1rem_0.1rem_0.5rem_black] rounded-2xl">
           {/* heading and view all button */}
           <header className="flex flex-row justify-between items-center">
-            <strong className="text-2xl">Expense's</strong>
+            <strong className="text-2xl">Recent Expense's</strong>
             <Link to="/expense">
               <button
                 className="flex flex-row items-center bg-gray-500/50 p-2 rounded-2xl hover:p-1 transition-all"
@@ -235,27 +235,30 @@ export function Dashboard() {
           {/* main content - expense list */}
           <article className="flex flex-col overflow-scroll noscrollbar">
             {data.expenseList.length > 0 ? (
-              data.expenseList.slice(0, 5).map((exp, index) => {
-                return (
-                  <section
-                    key={`exp-${index}`} // Added a key here!
-                    className="flex flex-row justify-between items-center p-2 m-2 shadow-[0.1rem_0.1rem_0.5rem_black_inset] rounded-2xl animate-[fromDown_1s_ease] hover:p-1 transition-all"
-                  >
-                    {/* info of expense */}
-                    <div className="flex flex-col p-2">
-                      <strong>{exp.to}</strong>
-                      <p>{exp.added_at}</p>
-                    </div>
-                    {/* amount spent */}
-                    <div>
-                      <button className="flex font-extrabold text-red-500 bg-red-500/50 px-2 rounded-xl py-1 justify-center items-center transition-[all_1.5s_ease] hover:p-0">
-                        -₹{exp.amount}
-                        <TbArrowCurveRight className="rotate-90 m-2 font-extrabold" />
-                      </button>
-                    </div>
-                  </section>
-                );
-              })
+              [...data.expenseList]
+                .reverse()
+                .slice(0, 5)
+                .map((exp, index) => {
+                  return (
+                    <section
+                      key={`exp-${index}`} // Added a key here!
+                      className="flex flex-row justify-between items-center p-2 m-2 shadow-[0.1rem_0.1rem_0.5rem_black_inset] rounded-2xl animate-[fromDown_1s_ease] hover:p-1 transition-all"
+                    >
+                      {/* info of expense */}
+                      <div className="flex flex-col p-2">
+                        <strong>{exp.to}</strong>
+                        <p>{exp.added_at}</p>
+                      </div>
+                      {/* amount spent */}
+                      <div>
+                        <button className="flex font-extrabold text-red-500 bg-red-500/50 px-2 rounded-xl py-1 justify-center items-center transition-[all_1.5s_ease] hover:p-0">
+                          -₹{exp.amount}
+                          <TbArrowCurveRight className="rotate-90 m-2 font-extrabold" />
+                        </button>
+                      </div>
+                    </section>
+                  );
+                })
             ) : (
               <h1 className="text-2xl text-center font-bold text-red-500 mt-8">
                 No Expense detail's
@@ -271,7 +274,7 @@ export function Dashboard() {
         <div className="flex  h-[500px] grow w-full md:w-1/2 flex-col p-2 shadow-[0.1rem_0.1rem_0.5rem_black] rounded-2xl">
           {/* heading and view all button */}
           <header className="flex flex-row justify-between items-center">
-            <strong className="text-2xl">Income's</strong>
+            <strong className="text-2xl">Recent Income's</strong>
             <Link to="/income">
               <button className="flex flex-row items-center bg-gray-500/50 p-2 rounded-2xl hover:p-1 transition-all">
                 See all <FaLongArrowAltRight className="mx-2" />
@@ -281,27 +284,30 @@ export function Dashboard() {
           {/* main content - income list */}
           <article className="flex flex-col overflow-scroll noscrollbar">
             {data.incomList.length > 0 ? (
-              data.incomList.slice(0, 5).map((exp, index) => {
-                return (
-                  <section
-                    key={`inc-${index}`} // Added a key here!
-                    className="flex flex-row justify-between items-center p-2 m-2 shadow-[0.1rem_0.1rem_0.5rem_black_inset] rounded-2xl animate-[fromDown_1s_ease] hover:p-1 transition-all"
-                  >
-                    {/* info of income */}
-                    <div className="flex flex-col p-2">
-                      <strong>{exp.source}</strong>
-                      <p>{exp.added_at}</p>
-                    </div>
-                    {/* salary received */}
-                    <div>
-                      <button className="flex font-extrabold text-green-500 bg-green-500/50 px-2 rounded-xl py-1 justify-center items-center transition-[all_1.5s_ease] hover:p-0">
-                        +₹{exp.salary}
-                        <TbArrowCurveRight className=" m-2 font-extrabold" />
-                      </button>
-                    </div>
-                  </section>
-                );
-              })
+              [...data.incomList]
+                .reverse()
+                .slice(0, 5)
+                .map((exp, index) => {
+                  return (
+                    <section
+                      key={`inc-${index}`} // Added a key here!
+                      className="flex flex-row justify-between items-center p-2 m-2 shadow-[0.1rem_0.1rem_0.5rem_black_inset] rounded-2xl animate-[fromDown_1s_ease] hover:p-1 transition-all"
+                    >
+                      {/* info of income */}
+                      <div className="flex flex-col p-2">
+                        <strong>{exp.source}</strong>
+                        <p>{exp.added_at}</p>
+                      </div>
+                      {/* salary received */}
+                      <div>
+                        <button className="flex font-extrabold text-green-500 bg-green-500/50 px-2 rounded-xl py-1 justify-center items-center transition-[all_1.5s_ease] hover:p-0">
+                          +₹{exp.salary}
+                          <TbArrowCurveRight className=" m-2 font-extrabold" />
+                        </button>
+                      </div>
+                    </section>
+                  );
+                })
             ) : (
               <h1 className="text-2xl font-bold text-center text-red-500 mt-8">
                 No Income detail's

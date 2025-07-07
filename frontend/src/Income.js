@@ -110,7 +110,7 @@ export function Income() {
             <Legend />
 
             {/* First set of bars (value) */}
-            <Bar dataKey="salary" fill="green" radius={[5, 5, 0, 0]}/>
+            <Bar dataKey="salary" fill="green" radius={[5, 5, 0, 0]} />
 
             {/* Optional: Second set of bars (uv), for grouped bar charts */}
             <Bar dataKey="id" fill="blue" />
@@ -122,7 +122,7 @@ export function Income() {
         <h1 className="text-center text-2xl font-extrabold">Income Soures</h1>
         <div className="flex flex-row flex-wrap">
           {income.length > 0 ? (
-            income.map((inc) => {
+            [...income].reverse().map((inc) => {
               return (
                 // each item in list
                 <section

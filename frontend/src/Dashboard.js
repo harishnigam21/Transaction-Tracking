@@ -32,8 +32,6 @@ export function Dashboard() {
   });
   const [graph_data, setGraph_data] = useState([]);
   const [viewall, setViewall] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   //data for graph
   useEffect(() => {

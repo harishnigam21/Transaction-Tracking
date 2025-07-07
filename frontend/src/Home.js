@@ -78,8 +78,8 @@ export function Home() {
           <Outlet />
         </article>
       )}
-      <footer className="sticky bottom-0 bg-blue-800 w-full text-center text-white">
-        Created by Harish
+      <footer className="sticky p-2 bottom-0 bg-blue-800 w-full text-center text-white">
+        Created by @Harish Nigam
       </footer>
     </main>
   );

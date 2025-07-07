@@ -114,7 +114,7 @@ export function Expense() {
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="added_at" />
+            <XAxis dataKey="to" />
             <YAxis dataKey="amount" /> <Tooltip />
             <Legend />
             <Line

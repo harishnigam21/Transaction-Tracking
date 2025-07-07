@@ -25,6 +25,6 @@ app.get("/", (req, res) => {
 
 app.listen(PORT, () => {
   console.log(
-    `Your YardStick Assignment backend is running on PORT no : ${PORT}`
+    `Your Transaction tracking backend is running on PORT no : ${PORT}`
   );
 });

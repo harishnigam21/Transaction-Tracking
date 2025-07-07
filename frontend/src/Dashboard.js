@@ -14,13 +14,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-} from "recharts";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid } from "recharts";
 export function Dashboard() {
   const [data, setData] = useState({
     totalIncome: 0,
@@ -116,24 +110,24 @@ export function Dashboard() {
               View all <FaLongArrowAltRight className="mx-2" />
             </button>
           </header>
-          {/* main content - transaction list */}
+          {/* main content - transaction list [...data.transactionList].reverse()*/}
           <article className="flex flex-col overflow-scroll noscrollbar">
             {data.transactionList.length > 0 ? (
               (viewall
-                ? data.transactionList
-                : data.transactionList.slice(0, 5)
+                ? [...data.transactionList].reverse()
+                : [...data.transactionList].reverse().slice(0, 5)
               ).map((exp, index) => {
                 return (
                   <section
                     key={`trans-${index}`} // Added a key here!
                     className="flex flex-row justify-between items-center p-2 m-2 shadow-[0.1rem_0.1rem_0.5rem_black_inset] rounded-2xl animate-[fromDown_1s_ease] hover:p-1 transition-all"
                   >
-                    {/* info of expense */}
+                    {/* info of transaction */}
                     <div className="flex flex-col p-2">
                       <strong>{exp.source ? exp.source : exp.to}</strong>
                       <p>{exp.added_at}</p>
                     </div>
-                    {/* amount spent */}
+                    {/* amount credited and debited */}
                     <div>
                       {exp.amount ? (
                         <button className="flex font-extrabold text-red-500 bg-red-500/50 px-2 rounded-xl py-1 justify-center items-center transition-[all_1.5s_ease] hover:p-0">
@@ -151,8 +145,8 @@ export function Dashboard() {
                 );
               })
             ) : (
-              <h1 className="text-center text-gray-500 mt-8">
-                Currently nothing here
+              <h1 className="text-2xl text-center font-bold text-red-500 mt-8">
+                No Transaction detail's
               </h1>
             )}
           </article>
@@ -263,8 +257,8 @@ export function Dashboard() {
                 );
               })
             ) : (
-              <h1 className="text-center text-gray-500 mt-8">
-                Currently nothing here
+              <h1 className="text-2xl text-center font-bold text-red-500 mt-8">
+                No Expense detail's
               </h1>
             )}
           </article>
@@ -293,12 +287,12 @@ export function Dashboard() {
                     key={`inc-${index}`} // Added a key here!
                     className="flex flex-row justify-between items-center p-2 m-2 shadow-[0.1rem_0.1rem_0.5rem_black_inset] rounded-2xl animate-[fromDown_1s_ease] hover:p-1 transition-all"
                   >
-                    {/* info of expense */}
+                    {/* info of income */}
                     <div className="flex flex-col p-2">
                       <strong>{exp.source}</strong>
                       <p>{exp.added_at}</p>
                     </div>
-                    {/* amount spent */}
+                    {/* salary received */}
                     <div>
                       <button className="flex font-extrabold text-green-500 bg-green-500/50 px-2 rounded-xl py-1 justify-center items-center transition-[all_1.5s_ease] hover:p-0">
                         +₹{exp.salary}
@@ -309,8 +303,8 @@ export function Dashboard() {
                 );
               })
             ) : (
-              <h1 className="text-center text-gray-500 mt-8">
-                Currently nothing here
+              <h1 className="text-2xl font-bold text-center text-red-500 mt-8">
+                No Income detail's
               </h1>
             )}
           </article>

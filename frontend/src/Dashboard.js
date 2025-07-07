@@ -6,6 +6,7 @@ import { TbCashBanknoteOff } from "react-icons/tb";
 import { MdOutlinePayments } from "react-icons/md";
 import { Link } from "react-router-dom";
 import fetchData from "./api/fetch";
+import pop from "./api/pop";
 import {
   PieChart,
   Pie,
@@ -51,10 +52,15 @@ export function Dashboard() {
       try {
         const response = await fetchData("dashboard", "GET", null, null);
         const apiResponse = await response.json();
-        if (apiResponse.data) {
+        if (response.ok) {
           setData(apiResponse.data);
+          pop(apiResponse.message, "green");
+        } else {
+          console.log(apiResponse.message);
+          pop(apiResponse.message, "red");
         }
       } catch (error) {
+        pop(error.message, "red");
         console.log(error);
       }
     };
@@ -211,10 +217,8 @@ export function Dashboard() {
               <Legend />
 
               {/* First set of bars (value) */}
-              <Bar dataKey="amount" fill="green" radius={[5, 5, 0, 0]} />
+              <Bar dataKey="amount" fill="#f7a1a1" radius={[5, 5, 0, 0]} />
 
-              {/* Optional: Second set of bars (uv), for grouped bar charts */}
-              <Bar dataKey="id" fill="blue" />
             </BarChart>
           </ResponsiveContainer>
         </div>

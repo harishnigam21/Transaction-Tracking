@@ -36,5 +36,24 @@ const allIncome = async (req, res) => {
     return res.status(500).json({ message: `${error.message}` });
   }
 };
-
-module.exports = { newIncome, allIncome };
+const deleteIncome = async (req, res) => {
+  const { id } = req.body;
+  try {
+    if (!id) {
+      res.status(404).json({ message: "missing important data" });
+    }
+    const deleteIncome = await prisma.income.delete({
+      where: { id: id },
+    });
+    if (!deleteIncome) {
+      console.log("Unable to delete this income");
+      res.status(503).json({ message: "Unable to delete this income" });
+    }
+    console.log("Income deleted successfully");
+    res.status(200).json({ message: "Income deleted successfully" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: error.message });
+  }
+};
+module.exports = { newIncome, allIncome, deleteIncome };

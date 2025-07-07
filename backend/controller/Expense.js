@@ -38,5 +38,24 @@ const allExpense = async (req, res) => {
     return res.status(500).json({ message: `${error.message}` });
   }
 };
-
-module.exports = { newExpense, allExpense };
+const deleteExpemse = async (req, res) => {
+  const { id } = req.body;
+  try {
+    if (!id) {
+      res.status(404).json({ message: "missing important data" });
+    }
+    const deleteExpense = await prisma.expense.delete({
+      where: { id: id },
+    });
+    if (!deleteExpense) {
+      console.log("Unable to delete this expense");
+      res.status(503).json({ message: "Unable to delete this expense" });
+    }
+    console.log("Expense deleted successfully");
+    res.status(200).json({ message: "Expense deleted successfully" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: error.message });
+  }
+};
+module.exports = { newExpense, allExpense, deleteExpemse };

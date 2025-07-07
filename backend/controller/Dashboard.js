@@ -35,7 +35,7 @@ const DashboardDetails = async (req, res) => {
           "You have no income and more expenses.Hence your account is in negative. ",
       });
     } else if (getIncome.length === 0 && getExpense.length === 0) {
-      return res.statu(400).json({
+      return res.status(400).json({
         message: "Please add your Income and Expenses at their respective page",
       });
     }

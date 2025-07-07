@@ -3,6 +3,7 @@ import { IoMdAdd } from "react-icons/io";
 import { TbArrowCurveRight } from "react-icons/tb";
 import { ImCross } from "react-icons/im";
 import fetchData from "./api/fetch";
+import pop from "./api/pop";
 import {
   BarChart,
   Bar,
@@ -28,8 +29,10 @@ export function Income() {
       if (response.ok) {
         setIncome(data.income);
         console.log(data.message);
+        pop(data.message, "green");
       } else {
         console.log(data.message);
+        pop(data.message, "red");
       }
     };
     getIncome();
@@ -51,6 +54,7 @@ export function Income() {
       paraRef.current.style.display = "block";
       paraRef.current.style.color = "green";
       paraRef.current.textContent = data.message;
+      pop(data.message, "green");
       setTimeout(() => {
         btnRef.current.disabled = false;
         btnRef.current.style.color = "white";
@@ -63,6 +67,23 @@ export function Income() {
       paraRef.current.style.display = "block";
       paraRef.current.style.color = "red";
       paraRef.current.textContent = data.message;
+      pop(data.message, "red");
+    }
+  };
+  const removeIncome = async (e, id) => {
+    const element = document.getElementById(`inc/${id}`);
+    element.style.animation = "spin 0.1s linear infinite ";
+    e.preventDefault();
+    const response = await fetchData("income", "DELETE", id, null);
+    const responseData = await response.json();
+    if (response.ok) {
+      pop(responseData.message, "green");
+      console.log(responseData.message);
+      setNewAdded((pre) => pre + 1);
+      element.style.display = "none";
+    } else {
+      pop(responseData.message, "red");
+      element.style.animation = "none";
     }
   };
   return (
@@ -112,8 +133,6 @@ export function Income() {
             {/* First set of bars (value) */}
             <Bar dataKey="salary" fill="green" radius={[5, 5, 0, 0]} />
 
-            {/* Optional: Second set of bars (uv), for grouped bar charts */}
-            <Bar dataKey="id" fill="blue" />
           </BarChart>
         </ResponsiveContainer>
       </section>
@@ -127,7 +146,7 @@ export function Income() {
                 // each item in list
                 <section
                   key={`section/${inc.id}`}
-                  className="flex flex-row grow flex-wrap justify-between items-center p-2 m-2 shadow-[0.1rem_0.1rem_0.5rem_black_inset] rounded-2xl animate-[fromDown_1s_ease] hover:p-1 transition-all"
+                  className="relative flex flex-row grow flex-wrap justify-between items-center p-2 m-2 shadow-[0.1rem_0.1rem_0.5rem_black_inset] rounded-2xl animate-[fromDown_1s_ease] hover:p-1 transition-all"
                 >
                   {/* info of income */}
                   <div className="flex flex-col p-2 justify-center items-center">
@@ -141,6 +160,12 @@ export function Income() {
                       <TbArrowCurveRight className="m-2 font-extrabold" />
                     </button>
                   </div>
+                  <ImCross
+                    title="remove"
+                    id={`inc/${inc.id}`}
+                    className="text-red-600 absolute right-2 top-2 z-1 icon"
+                    onClick={(e) => removeIncome(e, inc.id)}
+                  />
                 </section>
               );
             })

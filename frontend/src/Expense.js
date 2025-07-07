@@ -3,6 +3,8 @@ import { IoMdAdd } from "react-icons/io";
 import { TbArrowCurveRight } from "react-icons/tb";
 import { ImCross } from "react-icons/im";
 import fetchData from "./api/fetch";
+import pop from "./api/pop";
+
 import {
   LineChart,
   Line,
@@ -28,7 +30,9 @@ export function Expense() {
       if (response.ok) {
         setExpense(data.expense);
         console.log(data.message);
+        pop(data.message, "green");
       } else {
+        pop(data.message, "red");
         console.log(data.message);
       }
     };
@@ -48,6 +52,7 @@ export function Expense() {
       paraRef.current.style.display = "block";
       paraRef.current.style.color = "green";
       paraRef.current.textContent = data.message;
+      pop(data.message, "green");
       setTimeout(() => {
         btnRef.current.disabled = false;
         btnRef.current.style.color = "white";
@@ -60,6 +65,23 @@ export function Expense() {
       paraRef.current.style.display = "block";
       paraRef.current.style.color = "red";
       paraRef.current.textContent = data.message;
+      pop(data.message, "red");
+    }
+  };
+  const removeExpense = async (e, id) => {
+    const element = document.getElementById(`inc/${id}`);
+    element.style.animation = "spin 0.1s linear infinite ";
+    e.preventDefault();
+    const response = await fetchData("expense", "DELETE", id, null);
+    const responseData = await response.json();
+    if (response.ok) {
+      pop(responseData.message, "green");
+      console.log(responseData.message);
+      setNewAdded((pre) => pre + 1);
+      element.style.display = "none";
+    } else {
+      pop(responseData.message, "red");
+      element.style.animation = "none";
     }
   };
   return (
@@ -114,7 +136,7 @@ export function Expense() {
                 // each item in list
                 <section
                   key={`section/${exp.id}`}
-                  className="flex flex-row grow flex-wrap justify-between items-center p-2 m-2 shadow-[0.1rem_0.1rem_0.5rem_black_inset] rounded-2xl animate-[fromDown_1s_ease] hover:p-1 transition-all"
+                  className="relative flex flex-row grow flex-wrap justify-between items-center p-2 m-2 shadow-[0.1rem_0.1rem_0.5rem_black_inset] rounded-2xl animate-[fromDown_1s_ease] hover:p-1 transition-all"
                 >
                   {/* info of expense */}
                   <div className="flex flex-col p-2 justify-center items-center">
@@ -128,6 +150,12 @@ export function Expense() {
                       <TbArrowCurveRight className="m-2 font-extrabold rotate-90" />
                     </button>
                   </div>
+                  <ImCross
+                    title="remove"
+                    id={`inc/${exp.id}`}
+                    className="text-red-600 absolute right-2 top-2 z-1 icon"
+                    onClick={(e) => removeExpense(e, exp.id)}
+                  />
                 </section>
               );
             })

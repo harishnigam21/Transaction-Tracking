@@ -8,6 +8,7 @@ import { nav_item } from "./component_data/nav_item";
 import bg2 from "./assets/images/bg2.jpg";
 import bg3 from "./assets/images/bg3.jpg";
 import bg4 from "./assets/images/bg4.jpg";
+
 export function Home() {
   const location = useLocation();
   const [childPaths, setChildPaths] = useState([]);
@@ -43,6 +44,12 @@ export function Home() {
     <main className="flex flex-col justify-center box-border min-h-screen">
       <header className="fixed top-0 z-10">
         {screensize.width > 720 ? <Nav /> : <SideBar />}
+        <p
+          id="pops"
+          className="hidden pops p-2 text-center text-white font-extrabold bg-black rounded-b-3xl animate-[fromTop_1s_ease]"
+        >
+          for popping messages
+        </p>
       </header>
       {!hasChildRouteMatch ? (
         <article className="intro box-border grow flex flex-col justify-center items-center p-4 text-center animate-[fromUp_1s_ease]">

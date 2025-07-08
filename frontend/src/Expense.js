@@ -125,7 +125,7 @@ export function Expense() {
             <Line
               type="monotone" // For smooth curve
               dataKey="amount"
-              stroke="#8884d8"
+              stroke="#ff0300"
               activeDot={{ r: 8 }}
             />
           </LineChart>

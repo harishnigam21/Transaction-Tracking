@@ -4,6 +4,7 @@ import { TbArrowCurveRight } from "react-icons/tb";
 import { ImCross } from "react-icons/im";
 import fetchData from "./api/fetch";
 import pop from "./api/pop";
+import Loader from "./Loarder";
 import {
   BarChart,
   Bar,
@@ -19,6 +20,7 @@ export function Income() {
   const [source, setSource] = useState("");
   const [salary, setSalary] = useState();
   const [add, setAdd] = useState(false);
+  const [show, setShow] = useState(false);
   const [newAdded, setNewAdded] = useState(0);
   const btnRef = useRef(null);
   const paraRef = useRef(null);
@@ -28,6 +30,9 @@ export function Income() {
       const data = await response.json();
       if (response.ok) {
         setIncome(data.income);
+        setTimeout(() => {
+          setShow(true);
+        }, 1000);
         console.log(data.message);
         pop(data.message, "green");
       } else {
@@ -86,8 +91,8 @@ export function Income() {
       element.style.animation = "none";
     }
   };
-  return (
-    <div className="relative flex flex-col gap-5 p-4 justify-center items-center animate-[fromUp_1s_ease]">
+  return show ? (
+    <div className="relative flex flex-col gap-5 p-4 justify-center items-center animate-[fromBottom_1s_ease]">
       {/* income graph */}
       <section className="flex h-[500px] w-full md:w-[75%] rounded-2xl flex-col gap-4 shadow-[0.1rem_0.1rem_0.8rem_black] p-2">
         <div className="flex flex-row flex-wrap justify-center sm:justify-between items-center gap-3">
@@ -132,7 +137,6 @@ export function Income() {
 
             {/* First set of bars (value) */}
             <Bar dataKey="salary" fill="green" radius={[5, 5, 0, 0]} />
-
           </BarChart>
         </ResponsiveContainer>
       </section>
@@ -234,6 +238,10 @@ export function Income() {
       ) : (
         <></>
       )}
+    </div>
+  ) : (
+    <div className="absolute text-2xl text-black font-extrabold font-serif top-0 flex justify-center items-center w-full h-full bg-transparent p-0 m-0 z-10">
+      Fetching Income data <Loader />
     </div>
   );
 }

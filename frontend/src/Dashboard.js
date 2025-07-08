@@ -6,6 +6,7 @@ import { TbCashBanknoteOff } from "react-icons/tb";
 import { MdOutlinePayments } from "react-icons/md";
 import { Link } from "react-router-dom";
 import fetchData from "./api/fetch";
+import Loader from "./Loarder";
 import pop from "./api/pop";
 import {
   PieChart,
@@ -27,6 +28,7 @@ export function Dashboard() {
   });
   const [graph_data, setGraph_data] = useState([]);
   const [viewall, setViewall] = useState(false);
+  const [show, setShow] = useState(false);
 
   //data for graph
   useEffect(() => {
@@ -54,6 +56,9 @@ export function Dashboard() {
         const apiResponse = await response.json();
         if (response.ok) {
           setData(apiResponse.data);
+          setTimeout(() => {
+            setShow(true);
+          }, 1000);
           pop(apiResponse.message, "green");
         } else {
           console.log(apiResponse.message);
@@ -67,8 +72,8 @@ export function Dashboard() {
     getData();
   }, []);
 
-  return (
-    <div className="flex flex-col p-4 gap-20 animate-[fromUp_1s_ease]">
+  return show ? (
+    <div className="flex flex-col p-4 gap-20 animate-[fromBottom_1s_ease]">
       {/* remaining,income,expense cards */}
       <div className="flex flex-row flex-wrap gap-3">
         {/* remaining balance */}
@@ -218,7 +223,6 @@ export function Dashboard() {
 
               {/* First set of bars (value) */}
               <Bar dataKey="amount" fill="#f7a1a1" radius={[5, 5, 0, 0]} />
-
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -348,6 +352,10 @@ export function Dashboard() {
           </ResponsiveContainer>
         </div>
       </div>
+    </div>
+  ) : (
+    <div className="absolute text-2xl text-black font-extrabold font-serif top-0 flex justify-center items-center w-full h-full bg-transparent p-0 m-0 z-10">
+      Fetching your income and expense data <Loader />
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { TbArrowCurveRight } from "react-icons/tb";
 import { ImCross } from "react-icons/im";
 import fetchData from "./api/fetch";
 import pop from "./api/pop";
+import Loader from "./Loarder";
 
 import {
   LineChart,
@@ -20,6 +21,7 @@ export function Expense() {
   const [to, setTo] = useState("");
   const [amount, setAmount] = useState();
   const [add, setAdd] = useState(false);
+  const [show, setShow] = useState(false);
   const [newAdded, setNewAdded] = useState(0);
   const btnRef = useRef(null);
   const paraRef = useRef(null);
@@ -29,6 +31,9 @@ export function Expense() {
       const data = await response.json();
       if (response.ok) {
         setExpense(data.expense);
+        setTimeout(() => {
+          setShow(true);
+        }, 1000);
         console.log(data.message);
         pop(data.message, "green");
       } else {
@@ -84,8 +89,8 @@ export function Expense() {
       element.style.animation = "none";
     }
   };
-  return (
-    <div className="relative flex flex-col gap-5 p-4 justify-center items-center animate-[fromUp_1s_ease]">
+  return show ? (
+    <div className="relative flex flex-col gap-5 p-4 justify-center items-center animate-[fromBottom_1s_ease]">
       {/* expense graph */}
       <section className="flex h-[500px] w-full md:w-[75%] rounded-2xl flex-col gap-4 shadow-[0.1rem_0.1rem_0.8rem_black] p-2">
         <div className="flex flex-row flex-wrap justify-center sm:justify-between items-center gap-3">
@@ -224,6 +229,10 @@ export function Expense() {
       ) : (
         <></>
       )}
+    </div>
+  ) : (
+    <div className="absolute text-2xl text-black font-extrabold font-serif top-0 flex justify-center items-center w-full h-full bg-transparent p-0 m-0 z-10">
+      Fetching Expense data <Loader />
     </div>
   );
 }

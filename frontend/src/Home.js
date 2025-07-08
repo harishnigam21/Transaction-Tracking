@@ -79,7 +79,7 @@ export function Home() {
         </article>
       )}
       <footer className="sticky p-2 bottom-0 bg-blue-800 w-full text-center text-white">
-        Created by @Harish Nigam
+        Created by @ Harish Nigam
       </footer>
     </main>
   );

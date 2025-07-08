@@ -354,8 +354,8 @@ export function Dashboard() {
       </div>
     </div>
   ) : (
-    <div className="absolute text-2xl text-black font-extrabold font-serif top-0 flex justify-center items-center w-full h-full bg-transparent p-0 m-0">
-      Fetching your income and expense data <Loader />
+    <div className="absolute text-2xl text-black font-extrabold font-serif top-0 flex justify-center items-center w-full h-full bg-transparent p-0 m-0 text-center">
+      Fetching your dashboard data <Loader />
     </div>
   );
 }

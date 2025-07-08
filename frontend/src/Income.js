@@ -240,7 +240,7 @@ export function Income() {
       )}
     </div>
   ) : (
-    <div className="absolute text-2xl text-black font-extrabold font-serif top-0 flex justify-center items-center w-full h-full bg-transparent p-0 m-0">
+    <div className="absolute text-center text-2xl text-black font-extrabold font-serif top-0 flex justify-center items-center w-full h-full bg-transparent p-0 m-0">
       Fetching Income data <Loader />
     </div>
   );

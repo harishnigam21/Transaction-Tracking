@@ -231,7 +231,7 @@ export function Expense() {
       )}
     </div>
   ) : (
-    <div className="absolute text-2xl text-black font-extrabold font-serif top-0 flex justify-center items-center w-full h-full bg-transparent p-0 m-0 z-10">
+    <div className="absolute text-2xl text-black font-extrabold font-serif top-0 flex justify-center items-center w-full h-full bg-transparent p-0 m-0">
       Fetching Expense data <Loader />
     </div>
   );
